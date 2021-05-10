@@ -1,10 +1,14 @@
 import React from "react";
 import "./App.css";
+import { Body } from "./Components/Body";
+import { Header } from "./Components/Header";
+import { quiz } from "./data/getQuiz";
 
 function App() {
   return (
     <div className="App">
-      <h1>The Jump Rope Quiz</h1>
+      <Header quizName={quiz.quizName}/>
+      <Body quiz={quiz}/>
     </div>
   );
 }

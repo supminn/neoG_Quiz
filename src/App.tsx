@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Body } from "./Components/Body";
-import { Header } from "./Components/Header";
-import { quiz } from "./data/getQuiz";
+import { QuizData } from "./Components/QuizData";
+import { Home } from "./Components/Home";
+import {Routes, Route} from "react-router-dom";
+import { ScoreBoard } from "./Components/ScoreBoard";
 
 function App() {
+  const [quizName, setQuizName] = useState("");
+
   return (
     <div className="App">
-      <Header quizName={quiz.quizName}/>
-      <Body quiz={quiz}/>
+      <Routes>
+        <Route path="/" element={<Home setQuizName={setQuizName}/>}/>
+        <Route path="/quiz" element={<QuizData quizName={quizName}/>}/>
+        <Route path="/score-board" element={<ScoreBoard/>}/>
+      </Routes>
     </div>
   );
 }

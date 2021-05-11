@@ -3,7 +3,7 @@
 * Based on the above selection, individual quiz is choosen.
 * After completing the quiz, it is greyed out.
 * Add timer to take it to the next level.
-
+* Tailwind CSS for styling.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,7 +1,8 @@
-import { Quiz } from "./quiz.types";
+import { Quiz, Quizes } from "./quiz.types";
 
-export const quiz: Quiz = {
+export const BasicQuiz: Quiz = {
   quizName: "Basic Jump Rope Quiz",
+  highScore: 0,
   questions: [
     {
       question: "What is jump roping also known as?",
@@ -122,12 +123,14 @@ export const quiz: Quiz = {
   ],
 };
 
-export const JRDquiz: Quiz = {
+export const JrdQuiz: Quiz = {
   quizName: "Quiz related to Jump Rope Dudes",
+  highScore: 0,
   questions: [
     {
       question: "Which brand does the Jump Rope Dudes endorse?",
-      points: 15,
+      points: 10,
+      negativePoints: 3,
       options: [
         {
           value: "Rush Athletics",
@@ -147,15 +150,109 @@ export const JRDquiz: Quiz = {
         },
       ],
     },
+    {
+      question: "Who are the Jump Rope Dudes?",
+      points: 5,
+      options: [
+        {
+          value: "Rushie and Chris",
+          isRight: false,
+        },
+        {
+          value: "Brandon and Dan",
+          isRight: true,
+        },
+        {
+          value: "Dan and Rushie",
+          isRight: false,
+        },
+        {
+          value: "Nate and Brandon",
+          isRight: false,
+        },
+      ],
+    },
+    {
+      question: "What is the slogan Jump Rope Dudes promote?",
+      points: 5,
+      negativePoints: 2,
+      options: [
+        {
+          value: "Lets get jumping",
+          isRight: false,
+        },
+        {
+          value: "Jump rope for life",
+          isRight: false,
+        },
+        {
+          value: "Get set jump",
+          isRight: false,
+        },
+        {
+          value: "Do the thing",
+          isRight: true,
+        },
+      ],
+    },
+    {
+      question: "What is the ideal way to lose weight, get lean?",
+      points: 10,
+      negativePoints: 5,
+      options: [
+        {
+          value: "Jump rope and body weight exercises 3-4 days/week",
+          isRight: true,
+        },
+        {
+          value: "Jump rope for all the 7 days continuously",
+          isRight: false,
+        },
+        {
+          value: "Maintain a good diet. That's all",
+          isRight: false,
+        },
+        {
+          value: "Watch JRD jump and chill",
+          isRight: false,
+        },
+      ],
+    },
+    {
+      question:
+        "How long should one jump rope session be according to the jump rope dudes?",
+      points: 15,
+      negativePoints: 10,
+      options: [
+        {
+          value: "2 hours straight",
+          isRight: false,
+        },
+        {
+          value: "Keep jumping until one gets tired",
+          isRight: false,
+        },
+        {
+          value: "15 to 30 minutes",
+          isRight: true,
+        },
+        {
+          value: "Nothing is specified",
+          isRight: false,
+        },
+      ],
+    },
   ],
 };
 
-export const TrickQuiz: Quiz = {
+export const FancyQuiz: Quiz = {
   quizName: "Jump Rope tricks",
+  highScore: 0,
   questions: [
     {
       question: "Nateflix is a colaborations between?",
-      points: 15,
+      points: 10,
+      negativePoints: 2,
       options: [
         {
           value: "Nate KG and Coach Chris",
@@ -175,5 +272,104 @@ export const TrickQuiz: Quiz = {
         },
       ],
     },
+    {
+      question: "Where is Jump Rope Coach Chris based out of?",
+      points: 5,
+      options: [
+        {
+          value: "United States of America",
+          isRight: false,
+        },
+        {
+          value: "United Arab Emirates",
+          isRight: false,
+        },
+        {
+          value: "United Kingdom",
+          isRight: true,
+        },
+        {
+          value: "Australia",
+          isRight: false,
+        },
+      ],
+    },
+    {
+      question: "What is Nateflix?",
+      points: 15,
+      negativePoints: 5,
+      options: [
+        {
+          value:
+            "All the jump rope tricks taught by Chris and challenges created by Bav",
+          isRight: false,
+        },
+        {
+          value:
+            "All the jump rope tricks taught by Nate and challenges created by Chris",
+          isRight: false,
+        },
+        {
+          value:
+            "All the jump rope tricks taught by Kathy and challenges created by Nate",
+          isRight: false,
+        },
+        {
+          value:
+            "All the jump rope tricks taught by Chris and challenges created by Nate",
+          isRight: true,
+        },
+      ],
+    },
+    {
+      question: "How does Coach Chris teach combos on instagram?",
+      points: 15,
+      negativePoints: 7,
+      options: [
+        {
+          value:
+            "Add multiple clips of slow motion to cover all the aspects of explaination",
+          isRight: true,
+        },
+        {
+          value: "Instagram live sessions every day to each a new trick",
+          isRight: false,
+        },
+        {
+          value:
+            "Adds pictures so that people view them and learn on their own",
+          isRight: false,
+        },
+        {
+          value: "Coach Chirs is not on instagram",
+          isRight: false,
+        },
+      ],
+    },
+    {
+      question: "What type of ropes does Chris and Nate use?",
+      points: 15,
+      negativePoints: 5,
+      options: [
+        {
+          value: "Steel cable speed ropes",
+          isRight: false,
+        },
+        {
+          value: "PVC ropes",
+          isRight: false,
+        },
+        {
+          value: "Beaded ropes",
+          isRight: true,
+        },
+        {
+          value: "Crossrope",
+          isRight: false,
+        },
+      ],
+    },
   ],
 };
+
+export const quizes: Quizes = [BasicQuiz, JrdQuiz, FancyQuiz];

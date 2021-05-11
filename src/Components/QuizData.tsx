@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { quizes } from "../data/getQuiz";
 import { Quiz } from "../data/quiz.types";
 
 type ActionType =
@@ -38,9 +39,10 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       return state;
   }
 };
-export const Body = ({ quiz }: { quiz: Quiz }) => {
+export const QuizData = ({ quizName }: { quizName: string }) => {
   const [{ score, questionNo }, dispatch] = useReducer(reducer, initialState);
-  const totalQuestions: number = quiz.questions.length;
+  const selectedQuiz:Quiz = quizes.find((quiz) => quiz.quizName === quizName)! //not-null assertion operator
+  const totalQuestions: number = selectedQuiz.questions.length;
 
   return (
     <>
@@ -50,8 +52,8 @@ export const Body = ({ quiz }: { quiz: Quiz }) => {
           <p>
             Progress: {questionNo + 1}/{totalQuestions}
           </p>
-          <p>{quiz.questions[questionNo].question}</p>
-          {quiz.questions[questionNo].options.map((option) => (
+          <p>{selectedQuiz.questions[questionNo].question}</p>
+          {selectedQuiz.questions[questionNo].options.map((option) => (
             <button
               key={option.value}
               style={{ display: "block", margin: "auto" }}
@@ -59,11 +61,12 @@ export const Body = ({ quiz }: { quiz: Quiz }) => {
                 option.isRight
                   ? dispatch({
                       type: "INCREMENT",
-                      payload: quiz.questions[questionNo].points,
+                      payload: selectedQuiz.questions[questionNo].points,
                     })
                   : dispatch({
                       type: "DECREMENT",
-                      payload: quiz.questions[questionNo].negativePoints,
+                      payload:
+                        selectedQuiz.questions[questionNo].negativePoints,
                     })
               }
             >

@@ -12,5 +12,8 @@ export type Questions = {
 
 export type Quiz = {
   quizName: string;
+  highScore: number;
   questions: Questions[];
 };
+
+export type Quizes = Array<Quiz>;

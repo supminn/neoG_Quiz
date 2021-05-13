@@ -1,4 +1,4 @@
-import { quizes } from "../data/getQuiz"
+import { quizes } from "../Data/getQuiz"
 
 export const ScoreBoard = () => {
     return(

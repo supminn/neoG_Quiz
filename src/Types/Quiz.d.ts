@@ -1,19 +1,19 @@
-export type Options = {
+type Options = {
   value: string;
   isRight: boolean;
 };
 
-export type Questions = {
+type Questions = {
   question: string;
   points: number;
   negativePoints?:number;
   options: Array<Options>;
 };
 
-export type Quiz = {
+type Quiz = {
   quizName: string;
   highScore: number;
   questions: Questions[];
 };
 
-export type Quizes = Array<Quiz>;
+type Quizes = Array<Quiz>;

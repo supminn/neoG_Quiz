@@ -1,6 +1,7 @@
 import { useReducer } from "react";
-import { quizes } from "../data/getQuiz";
-import { Quiz } from "../data/quiz.types";
+import { quizes } from "../Data/getQuiz";
+// import { Quiz } from "../data/Quiz";
+import { blackWhiteButton } from "../Styles/Style";
 
 type ActionType =
   | {
@@ -41,7 +42,7 @@ const reducer = (state: typeof initialState, action: ActionType) => {
 };
 export const QuizData = ({ quizName }: { quizName: string }) => {
   const [{ score, questionNo }, dispatch] = useReducer(reducer, initialState);
-  const selectedQuiz:Quiz = quizes.find((quiz) => quiz.quizName === quizName)! //not-null assertion operator
+  const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)! //not-null assertion operator
   const totalQuestions: number = selectedQuiz.questions.length;
 
   return (
@@ -54,7 +55,7 @@ export const QuizData = ({ quizName }: { quizName: string }) => {
           </p>
           <p>{selectedQuiz.questions[questionNo].question}</p>
           {selectedQuiz.questions[questionNo].options.map((option) => (
-            <button
+            <button className={blackWhiteButton}
               key={option.value}
               style={{ display: "block", margin: "auto" }}
               onClick={() =>

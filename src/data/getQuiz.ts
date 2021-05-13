@@ -1,4 +1,3 @@
-import { Quiz, Quizes } from "./quiz.types";
 
 export const BasicQuiz: Quiz = {
   quizName: "Basic Jump Rope Quiz",

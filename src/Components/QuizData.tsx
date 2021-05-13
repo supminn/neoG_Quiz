@@ -1,27 +1,15 @@
 import { useReducer } from "react";
 import { quizes } from "../Data/getQuiz";
-// import { Quiz } from "../data/Quiz";
-import { blackWhiteButton } from "../Styles/Style";
+import { primaryBtn, secondaryBtn } from "../Styles/Style";
 
-type ActionType =
-  | {
-      type: "INCREMENT";
-      payload: number;
-    }
-  | {
-      type: "DECREMENT";
-      payload?: number;
-    }
-  | {
-      type: "RESET";
-    };
+
 
 const initialState = {
   score: 0,
   questionNo: 0,
 };
 
-const reducer = (state: typeof initialState, action: ActionType) => {
+const reducer = (state: typeof initialState, action: Action) => {
   switch (action.type) {
     case "INCREMENT":
       return {
@@ -40,6 +28,7 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       return state;
   }
 };
+
 export const QuizData = ({ quizName }: { quizName: string }) => {
   const [{ score, questionNo }, dispatch] = useReducer(reducer, initialState);
   const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)! //not-null assertion operator
@@ -50,14 +39,13 @@ export const QuizData = ({ quizName }: { quizName: string }) => {
       {questionNo + 1 > totalQuestions && <h3>Final scrore {score}</h3>}
       {questionNo + 1 <= totalQuestions && (
         <div>
-          <p>
-            Progress: {questionNo + 1}/{totalQuestions}
+          <p className="m-2">
+            <span className="underline">Progress</span>: {questionNo + 1}/{totalQuestions}
           </p>
-          <p>{selectedQuiz.questions[questionNo].question}</p>
+          <p className="p-2 italic font-medium text-xl">{selectedQuiz.questions[questionNo].question}</p>
           {selectedQuiz.questions[questionNo].options.map((option) => (
-            <button className={blackWhiteButton}
+            <button className={secondaryBtn}
               key={option.value}
-              style={{ display: "block", margin: "auto" }}
               onClick={() =>
                 option.isRight
                   ? dispatch({
@@ -76,7 +64,7 @@ export const QuizData = ({ quizName }: { quizName: string }) => {
           ))}
         </div>
       )}
-      <button onClick={() => dispatch({ type: "RESET" })}>Restart</button>
+      <button className={primaryBtn} onClick={() => dispatch({ type: "RESET" })}>Restart</button>
     </>
   );
 };

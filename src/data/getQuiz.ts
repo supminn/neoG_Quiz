@@ -1,7 +1,7 @@
 
 export const BasicQuiz: Quiz = {
   quizName: "Basic Jump Rope Quiz",
-  highScore: 0,
+  level: "Easy",
   questions: [
     {
       question: "What is jump roping also known as?",
@@ -124,7 +124,7 @@ export const BasicQuiz: Quiz = {
 
 export const JrdQuiz: Quiz = {
   quizName: "Quiz related to Jump Rope Dudes",
-  highScore: 0,
+  level: "Medium",
   questions: [
     {
       question: "Which brand does the Jump Rope Dudes endorse?",
@@ -246,7 +246,7 @@ export const JrdQuiz: Quiz = {
 
 export const FancyQuiz: Quiz = {
   quizName: "Jump Rope tricks",
-  highScore: 0,
+  level: "Hard",
   questions: [
     {
       question: "Nateflix is a colaborations between?",

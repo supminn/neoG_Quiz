@@ -12,7 +12,7 @@ type Questions = {
 
 type Quiz = {
   quizName: string;
-  highScore: number;
+  level: string;
   questions: Questions[];
 };
 

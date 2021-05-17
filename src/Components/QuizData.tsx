@@ -1,20 +1,26 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizes } from "../Data/getQuiz";
-import { DECREMENT, INCREMENT } from "../Reducer/typeValues";
+import { DECREMENT, INCREMENT, UPDATE_ATTEMPT } from "../Reducer/typeValues";
 import { primaryBtn, optionBtn } from "../Styles/Style";
 import { Modal } from "./Modal";
 import { Result } from "./Result";
 
-
 export const QuizData = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const {state:{questionNo, quizName}, dispatch} = useQuizContext();
+  const {
+    state: { questionNo, quizName },
+    dispatch,
+  } = useQuizContext();
 
   const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)!;
 
   const totalQuestions: number = selectedQuiz.questions.length;
+
+  useEffect(() => {
+    dispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
+  }, []);
 
   return (
     <>

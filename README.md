@@ -2,11 +2,13 @@
 * Multiple quizes based on each topic - JRD, RA, TJRCC-Nate.
 * Quiz unlocks by scoring a threshold in the previous quiz.
 * Based on the above selection, individual quiz is choosen.
-* After completing the quiz, it is greyed out.
+* After completing the quiz, it is grayed out. Or count the no. of attempts
 * Add timer to take it to the next level.
 * Tailwind CSS for styling.
 * Share score, ask friends to take up the challenge
+* Show the currect answers and the points break-up
 * [Design](https://dribbble.com/shots/15601528-BioMorphik)
+[one more](https://dribbble.com/shots/15610989-PPDP-Planner-Onboarding)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

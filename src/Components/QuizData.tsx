@@ -1,59 +1,45 @@
-import { useReducer } from "react";
+import {  useState } from "react";
+import { useQuizContext } from "../Context/QuizProvider";
 import { quizes } from "../Data/getQuiz";
-import { primaryBtn, secondaryBtn } from "../Styles/Style";
+import { DECREMENT, INCREMENT } from "../Reducer/typeValues";
+import { primaryBtn, optionBtn } from "../Styles/Style";
+import { Modal } from "./Modal";
+import { Result } from "./Result";
 
 
+export const QuizData = () => {
+  const [showModal, setShowModal] = useState(false);
 
-const initialState = {
-  score: 0,
-  questionNo: 0,
-};
+  const {state:{questionNo, quizName}, dispatch} = useQuizContext();
 
-const reducer = (state: typeof initialState, action: Action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return {
-        score: state.score + action.payload,
-        questionNo: state.questionNo + 1,
-      };
-    case "DECREMENT":
-      let val = action?.payload ? action.payload : 0;
-      return {
-        score: state.score - val,
-        questionNo: state.questionNo + 1,
-      };
-    case "RESET":
-      return initialState;
-    default:
-      return state;
-  }
-};
+  const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)!;
 
-export const QuizData = ({ quizName }: { quizName: string }) => {
-  const [{ score, questionNo }, dispatch] = useReducer(reducer, initialState);
-  const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)! //not-null assertion operator
   const totalQuestions: number = selectedQuiz.questions.length;
 
   return (
     <>
-      {questionNo + 1 > totalQuestions && <h3>Final scrore {score}</h3>}
+      {questionNo + 1 > totalQuestions && <Result />}
       {questionNo + 1 <= totalQuestions && (
         <div>
           <p className="m-2">
-            <span className="underline">Progress</span>: {questionNo + 1}/{totalQuestions}
+            <span className="underline">Progress</span>: {questionNo + 1}/
+            {totalQuestions}
           </p>
-          <p className="p-2 italic font-medium text-xl">{selectedQuiz.questions[questionNo].question}</p>
+          <p className="p-2 italic font-medium text-xl">
+            {selectedQuiz.questions[questionNo].question}
+          </p>
           {selectedQuiz.questions[questionNo].options.map((option) => (
-            <button className={secondaryBtn}
+            <button
+              className={optionBtn}
               key={option.value}
               onClick={() =>
                 option.isRight
                   ? dispatch({
-                      type: "INCREMENT",
+                      type: INCREMENT,
                       payload: selectedQuiz.questions[questionNo].points,
                     })
                   : dispatch({
-                      type: "DECREMENT",
+                      type: DECREMENT,
                       payload:
                         selectedQuiz.questions[questionNo].negativePoints,
                     })
@@ -62,9 +48,13 @@ export const QuizData = ({ quizName }: { quizName: string }) => {
               {option.value}
             </button>
           ))}
+          <button className={primaryBtn} onClick={() => setShowModal(true)}>
+            Restart
+          </button>
         </div>
       )}
-      <button className={primaryBtn} onClick={() => dispatch({ type: "RESET" })}>Restart</button>
+
+      {showModal && <Modal setShowModal={setShowModal} />}
     </>
   );
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizes } from "../Data/getQuiz";
 import { DECREMENT, INCREMENT, UPDATE_ATTEMPT } from "../Reducer/typeValues";
@@ -27,10 +28,13 @@ export const QuizData = () => {
       {questionNo + 1 > totalQuestions && <Result />}
       {questionNo + 1 <= totalQuestions && (
         <div>
-          <p className="m-2">
+         <div className="flex align items-center">
+         <Link to="/" className="px-3 py-1 rounded-full hover:bg-blue-200"><i className="fas fa-angle-left"></i></Link>
+          <p className="m-2 flex-grow">
             <span className="underline">Progress</span>: {questionNo + 1}/
             {totalQuestions}
           </p>
+         </div>
           <p className="p-2 italic font-medium text-xl">
             {selectedQuiz.questions[questionNo].question}
           </p>

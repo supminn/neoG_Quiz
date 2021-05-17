@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider"
+import { primaryBtn } from "../Styles/Style";
 
 export const ScoreBoard = () => {
     const {state:{stats}} = useQuizContext();
@@ -11,6 +13,7 @@ export const ScoreBoard = () => {
                 <li key={stat.name}>{stat.name} - <b>{stat.highScore}</b></li>
             ))}
         </ul>
+        <Link to="/" ><button className={primaryBtn}>Home</button></Link>
         </>
     )
 }

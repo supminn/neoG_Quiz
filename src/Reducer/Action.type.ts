@@ -6,7 +6,8 @@ import {
   SET_STATS,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
-  UNLOCK_QUIZ
+  UNLOCK_QUIZ,
+  NEXT_QUESTION,
 } from "./typeValues";
 
 export type Action =
@@ -39,8 +40,11 @@ export type Action =
         score: number;
       };
     }
-    | {
+  | {
       type: typeof UNLOCK_QUIZ;
+    }
+  | {
+      type: typeof NEXT_QUESTION;
     }
   | {
       type: typeof RESET;

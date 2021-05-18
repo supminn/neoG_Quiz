@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useTimer } from "react-timer-hook";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizzes } from "../Data/getQuiz";
-import { Quiz } from "../Data/Quiz.type";
-import { DECREMENT, INCREMENT, UPDATE_ATTEMPT } from "../Reducer/typeValues";
-import { primaryBtn, optionBtn } from "../Styles/Style";
+import { Options, Quiz } from "../Data/Quiz.type";
+import { DECREMENT, INCREMENT, NEXT_QUESTION, UPDATE_ATTEMPT } from "../Reducer/typeValues";
+import { primaryBtn, optionBtn, optionRight, optionWrong } from "../Styles/Style";
+import { createTimer } from "../Utils/timer";
 import { Modal } from "./Modal";
 import { Result } from "./Result";
 
 export const QuizData = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const {
     state: { questionNo, quizName },
@@ -22,9 +25,39 @@ export const QuizData = () => {
 
   const totalQuestions: number = selectedQuiz.questions.length;
 
+  const { seconds, minutes, start, restart, pause } = useTimer({
+    expiryTimestamp: createTimer(),
+    onExpire: () =>
+      updateAnswer({isRight:false, value:"timer expired"})
+  });
+
   useEffect(() => {
     dispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
+    start();
   }, []);
+
+
+  const updateAnswer = (option: Options) => {
+    if (option.isRight) {
+      dispatch({
+        type: INCREMENT,
+        payload: selectedQuiz.questions[questionNo].points,
+      });
+    } else {
+      dispatch({
+        type: DECREMENT,
+        payload: selectedQuiz.questions[questionNo].negativePoints,
+      });
+    }
+    setShowAnswer(true);
+    pause();
+  };
+
+  const moveFurther = () => {
+    setShowAnswer(false);
+    dispatch({type:NEXT_QUESTION})
+   restart(createTimer());
+  }
 
   return (
     <>
@@ -39,33 +72,28 @@ export const QuizData = () => {
               <span className="underline">Progress</span>: {questionNo + 1}/
               {totalQuestions}
             </p>
+            <span className={`font-medium ${seconds<11?"animate-bounce text-red-600":"animate-pulse"}`}>
+              0{minutes}:{seconds<10?`0${seconds}`:seconds}
+            </span>
           </div>
           <p className="p-2 italic font-medium text-xl">
             {selectedQuiz.questions[questionNo].question}
           </p>
           {selectedQuiz.questions[questionNo].options.map((option) => (
             <button
-              className={optionBtn}
+              className={showAnswer?option.isRight?optionRight:optionWrong :optionBtn}
               key={option.value}
-              onClick={() =>
-                option.isRight
-                  ? dispatch({
-                      type: INCREMENT,
-                      payload: selectedQuiz.questions[questionNo].points,
-                    })
-                  : dispatch({
-                      type: DECREMENT,
-                      payload:
-                        selectedQuiz.questions[questionNo].negativePoints,
-                    })
-              }
+              onClick={() => updateAnswer(option)}
             >
               {option.value}
             </button>
           ))}
-          <button className={primaryBtn} onClick={() => setShowModal(true)}>
-            Restart
+          {showAnswer?<button className={primaryBtn} onClick={moveFurther}>
+          {questionNo + 1 < totalQuestions?<i className="fas fa-arrow-right"> Next</i>:"Submit"}
           </button>
+          :<button className={primaryBtn} onClick={() => setShowModal(false)}>
+            Restart
+          </button>}
         </div>
       )}
 

@@ -90,7 +90,7 @@ export const BasicQuiz: Quiz = {
         },
         {
           value: "It doesn't matter",
-          isRight: true,
+          isRight: false,
         },
       ],
     },

@@ -4,10 +4,10 @@ import { State } from "./State.type";
 import {
   DECREMENT,
   INCREMENT,
+  NEXT_QUESTION,
   RESET,
   SET_QUIZ,
   SET_STATS,
-  UNLOCK_QUIZ,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
 } from "./typeValues";
@@ -26,7 +26,7 @@ export const quizReducer = (state: State, action: Action) => {
         ...state,
         quizName: action.payload,
         score: 0,
-        questionNo: 1,
+        questionNo: 0,
       };
     case SET_STATS:
       return {
@@ -41,15 +41,18 @@ export const quizReducer = (state: State, action: Action) => {
       return {
         ...state,
         score: state.score + action.payload,
-        questionNo: state.questionNo + 1,
       };
     case DECREMENT:
       let val = action?.payload ? action.payload : 0;
       return {
         ...state,
         score: state.score - val,
-        questionNo: state.questionNo + 1,
       };
+      case NEXT_QUESTION:
+        return {
+          ...state,
+          questionNo: state.questionNo + 1
+        }
     case RESET:
       return {
         ...state,

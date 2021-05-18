@@ -2,8 +2,9 @@
 * Show correct answer for each question. Style the result page.
 * Quiz unlocks by scoring a threshold in the previous quiz.
 * Add timer to take it to the next level.
+* Stats for individual user, score board for overall.
 * Share score, ask friends to take up the challenge
-* Show the correct answers and the points break-up
+* Show points break-up.
 * Paging for quiz data. Only when that quiz is selected, load it.
 * [Design](https://dribbble.com/shots/15601528-BioMorphik)
 [one more](https://dribbble.com/shots/15610989-PPDP-Planner-Onboarding)

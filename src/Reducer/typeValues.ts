@@ -1,5 +1,6 @@
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";
+export const NEXT_QUESTION = "NEXT_QUESTION";
 export const RESET = "RESET";
 export const SET_QUIZ = "SET_QUIZ";
 export const SET_STATS = "SET_STATS";

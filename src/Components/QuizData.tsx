@@ -45,6 +45,12 @@ export const QuizData = () => {
     start();
   }, []);
 
+  useEffect(() => {
+    if(questionNo + 1 > totalQuestions){
+      pause();
+    }
+  },[questionNo]);
+
   const updateAnswer = (option: Options) => {
     if (option.isRight) {
       dispatch({
@@ -68,7 +74,7 @@ export const QuizData = () => {
   };
 
   return (
-    <>
+    <div className="p-2">
       {questionNo + 1 > totalQuestions && <Result />}
       {questionNo + 1 <= totalQuestions && (
         <div>
@@ -96,6 +102,7 @@ export const QuizData = () => {
           </h3>
           {selectedQuiz.questions[questionNo].options.map((option) => (
             <button
+            disabled={showAnswer}
               className={
                 showAnswer
                   ? option.isRight
@@ -126,6 +133,6 @@ export const QuizData = () => {
       )}
 
       {showModal && <Modal setShowModal={setShowModal} restart={restart} />}
-    </>
+    </div>
   );
 };

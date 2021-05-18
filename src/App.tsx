@@ -6,6 +6,8 @@ import { SET_STATS } from "./Reducer/typeValues";
 import { useEffect } from "react";
 import { useQuizContext } from "./Context/QuizProvider";
 import { Rules } from "./Components/Rules";
+import { Navigation } from "./Components/Navigation";
+import { Result } from "./Components/Result";
 
 function App() {
 
@@ -16,12 +18,14 @@ function App() {
   }, [])
 
   return (
-    <div className="text-center text-blue-900 bg-blue-50 p-3 h-screen">
+    <div className="text-center text-blue-900 bg-blue-50 h-screen">
+      <Navigation/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/quiz" element={<QuizData/>}/>
         <Route path="/score-board" element={<ScoreBoard/>}/>
         <Route path="/rules" element={<Rules/>}/>
+        <Route path="/res" element={<Result/>}/>
       </Routes>
     </div>
   );

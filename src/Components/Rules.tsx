@@ -12,9 +12,9 @@ export const Rules = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 ">
-         <Link to="/" className="font-medium px-2 py-1 rounded-full hover:bg-blue-200 absolute top-2 left-2">
+         {/* <Link to="/" className="font-medium px-2 py-1 rounded-full hover:bg-blue-200 absolute top-16 left-2">
            <i className="fas fa-chevron-circle-left"></i> Home
-           </Link>
+           </Link> */}
       <div className="max-w-lg w-full rounded-lg shadow-lg p-4 bg-white">
         <h3 className="font-semibold text-lg text-blue-800 tracking-wide mb-2">
           Instructions
@@ -40,7 +40,7 @@ export const Rules = () => {
           </li>
 
           <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> Score <em className="font-semibold">70</em> or above to unlock the next level
+            <i className="fab fa-gg-circle fa-lg"></i> Score <em className="font-semibold">70%</em> or above to unlock the next level
           </li>
 
          {quizDetail?.level!=="Easy" && <li className="py-2">

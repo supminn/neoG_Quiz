@@ -9,9 +9,9 @@ export const ScoreBoard = () => {
 
   return (
     <>
-        <Link to="/" className="float-left font-medium px-2 py-1 rounded-full hover:bg-blue-200">
+        {/* <Link to="/" className="float-left font-medium px-2 py-1 rounded-full hover:bg-blue-200">
            <i className="fas fa-chevron-circle-left"></i> Home
-           </Link>
+           </Link> */}
       <h2 className="text-xl font-medium mb-2"> Score Board and Statistics</h2>
       <table className="rounded-t-lg m-5 w-full mx-auto bg-blue-200 text-blue-800">
         <thead>

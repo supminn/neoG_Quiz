@@ -69,7 +69,9 @@ export const quizReducer = (state: State, action: Action) => {
         ...state,
         stats: state.stats.map((stat) =>
           stat.name === action.payload.quizName
-            ? { ...stat, highScore: action.payload.highScore }
+            ? stat.highScore < action.payload.score
+              ? { ...stat, highScore: action.payload.score }
+              : stat
             : stat
         ),
       };

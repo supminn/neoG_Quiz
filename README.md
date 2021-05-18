@@ -6,7 +6,6 @@
 * Based on the above selection, individual quiz is choosen.
 * After completing the quiz, it is grayed out. Or count the no. of attempts
 * Add timer to take it to the next level.
-* Tailwind CSS for styling.
 * Share score, ask friends to take up the challenge
 * Show the correct answers and the points break-up
 * Paging for quiz data. Only when that quiz is selected, load it.

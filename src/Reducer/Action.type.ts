@@ -35,7 +35,7 @@ export type Action =
       type: typeof UPDATE_HIGHSCORE;
       payload: {
         quizName: string;
-        highScore: number;
+        score: number;
       };
     }
   | {

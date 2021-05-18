@@ -5,13 +5,10 @@ import { RESET, UPDATE_HIGHSCORE } from "../Reducer/typeValues";
 import { primaryBtn, secondaryBtn } from "../Styles/Style"
 
 export const Result = () => {
-  const {state:{score, quizName, stats}, dispatch} = useQuizContext();
+  const {state:{score, quizName}, dispatch} = useQuizContext();
 
   useEffect(() => {
-    const data = stats.find(stat => stat.name === quizName)!;
-    if(score>data.highScore){
-      dispatch({type: UPDATE_HIGHSCORE, payload:{quizName, highScore: score}})
-    }
+      dispatch({type: UPDATE_HIGHSCORE, payload:{quizName, score}})
   },[]);
   
     return(

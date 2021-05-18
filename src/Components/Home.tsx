@@ -29,7 +29,7 @@ export const Home = () => {
           key={quiz.quizName}
           onClick={() => {
             dispatch({ type: SET_QUIZ, payload: quiz.quizName });
-            navigate("/quiz");
+            navigate("/rules");
           }}
         >
           {quiz.quizName}

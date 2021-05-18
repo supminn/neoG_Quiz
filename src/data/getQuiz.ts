@@ -6,7 +6,7 @@ export const BasicQuiz: Quiz = {
   questions: [
     {
       question: "What is jump roping also known as?",
-      points: 5,
+      points: 10,
       options: [
         {
           value: "Rope Skipping",
@@ -29,8 +29,7 @@ export const BasicQuiz: Quiz = {
     {
       question:
         "What is the easiest way of measuring jump rope's height? Where should the handles come up to?",
-      points: 5,
-      negativePoints: 2,
+      points: 10,
       options: [
         {
           value: "Head",
@@ -52,8 +51,7 @@ export const BasicQuiz: Quiz = {
     },
     {
       question: "Where should one's hands be placed while jumping rope?",
-      points: 5,
-      negativePoints: 2,
+      points: 10,
       options: [
         {
           value: "By the hips",
@@ -77,7 +75,6 @@ export const BasicQuiz: Quiz = {
       question:
         "Ideally, how high should one jump for the rope to go over and complete a rotation?",
       points: 10,
-      negativePoints: 5,
       options: [
         {
           value: "As high as possible",
@@ -100,7 +97,6 @@ export const BasicQuiz: Quiz = {
     {
       question: "What is the right technique of jumping?",
       points: 10,
-      negativePoints: 5,
       options: [
         {
           value: "Place you complete foot down after each jump",
@@ -130,7 +126,7 @@ export const JrdQuiz: Quiz = {
     {
       question: "Which brand does the Jump Rope Dudes endorse?",
       points: 10,
-      negativePoints: 3,
+      negativePoints: 5,
       options: [
         {
           value: "Rush Athletics",
@@ -152,7 +148,8 @@ export const JrdQuiz: Quiz = {
     },
     {
       question: "Who are the Jump Rope Dudes?",
-      points: 5,
+      points: 10,
+      negativePoints: 5,
       options: [
         {
           value: "Rushie and Chris",
@@ -174,8 +171,8 @@ export const JrdQuiz: Quiz = {
     },
     {
       question: "What is the slogan Jump Rope Dudes promote?",
-      points: 5,
-      negativePoints: 2,
+      points: 10,
+      negativePoints: 5,
       options: [
         {
           value: "Lets get jumping",
@@ -221,8 +218,8 @@ export const JrdQuiz: Quiz = {
     {
       question:
         "How long should one jump rope session be according to the jump rope dudes?",
-      points: 15,
-      negativePoints: 10,
+      points: 10,
+      negativePoints: 5,
       options: [
         {
           value: "2 hours straight",
@@ -252,7 +249,7 @@ export const FancyQuiz: Quiz = {
     {
       question: "Nateflix is a colaborations between?",
       points: 10,
-      negativePoints: 2,
+      negativePoints: 5,
       options: [
         {
           value: "Nate KG and Coach Chris",
@@ -274,7 +271,8 @@ export const FancyQuiz: Quiz = {
     },
     {
       question: "Where is Jump Rope Coach Chris based out of?",
-      points: 5,
+      points: 10,
+      negativePoints: 5,
       options: [
         {
           value: "United States of America",
@@ -296,7 +294,7 @@ export const FancyQuiz: Quiz = {
     },
     {
       question: "What is Nateflix?",
-      points: 15,
+      points: 10,
       negativePoints: 5,
       options: [
         {
@@ -323,8 +321,8 @@ export const FancyQuiz: Quiz = {
     },
     {
       question: "How does Coach Chris teach combos on instagram?",
-      points: 15,
-      negativePoints: 7,
+      points: 10,
+      negativePoints: 5,
       options: [
         {
           value:
@@ -348,7 +346,7 @@ export const FancyQuiz: Quiz = {
     },
     {
       question: "What type of ropes does Chris and Nate use?",
-      points: 15,
+      points: 10,
       negativePoints: 5,
       options: [
         {

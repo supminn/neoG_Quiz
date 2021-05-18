@@ -6,6 +6,7 @@ import {
   SET_STATS,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
+  UNLOCK_QUIZ
 } from "./typeValues";
 
 export type Action =
@@ -37,6 +38,9 @@ export type Action =
         quizName: string;
         score: number;
       };
+    }
+    | {
+      type: typeof UNLOCK_QUIZ;
     }
   | {
       type: typeof RESET;

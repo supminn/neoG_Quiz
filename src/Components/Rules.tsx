@@ -21,26 +21,28 @@ export const Rules = () => {
           Quiz Details
         </h3>
         <ul className="list-inside mb-1 text-left">
-          <li>
+          <li className="py-1">
             {" "}
             <i className="fab fa-gg-circle fa-lg"></i> This quiz is of level:{" "}
             <em className="font-semibold">{quizDetail?.level}</em>
           </li>
 
-          <li>
+          <li className="py-1">
             <i className="fab fa-gg-circle fa-lg"></i> There are a total of{" "}
             <b>{quizDetail?.questions.length}</b> questions
           </li>
 
-          <li>
-            <i className="fab fa-gg-circle fa-lg"></i> Click on continue to skip
-            any unknown question
+          <li className="py-1">
+            <i className="fab fa-gg-circle fa-lg"></i> Each question is of 10 points.
           </li>
 
-          <li>
-            <i className="fab fa-gg-circle fa-lg"></i> Answer would be revealed
-            once the attempt is made
+          <li className="py-1">
+            <i className="fab fa-gg-circle fa-lg"></i> Score 70 or above to unlock the next level
           </li>
+
+         {quizDetail?.level!=="Easy" && <li className="py-1">
+            <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has a negative marking of 5 points
+          </li>}
         </ul>
         <div>
           <button

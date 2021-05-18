@@ -5,3 +5,4 @@ export const SET_QUIZ = "SET_QUIZ";
 export const SET_STATS = "SET_STATS";
 export const UPDATE_ATTEMPT = "UPDATE_ATTEMPT";
 export const UPDATE_HIGHSCORE = "UPDATE_HIGHSCORE";
+export const UNLOCK_QUIZ = "UNLOCK_QUIZ";

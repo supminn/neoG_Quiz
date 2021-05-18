@@ -7,6 +7,7 @@ import {
   RESET,
   SET_QUIZ,
   SET_STATS,
+  UNLOCK_QUIZ,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
 } from "./typeValues";

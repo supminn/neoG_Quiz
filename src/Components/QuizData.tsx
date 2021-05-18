@@ -16,7 +16,9 @@ export const QuizData = () => {
     dispatch,
   } = useQuizContext();
 
-  const selectedQuiz: Quiz = quizzes.find((quiz) => quiz.quizName === quizName)!;
+  const selectedQuiz: Quiz = quizzes.find(
+    (quiz) => quiz.quizName === quizName
+  )!;
 
   const totalQuestions: number = selectedQuiz.questions.length;
 
@@ -29,16 +31,15 @@ export const QuizData = () => {
       {questionNo + 1 > totalQuestions && <Result />}
       {questionNo + 1 <= totalQuestions && (
         <div>
-         <div className="flex align items-center">
-         <Link to="/" className="px-2 py-1 rounded-full hover:bg-blue-200">
-           {/* <i className="fas fa-angle-left"></i> */}
-           <i className="fas fa-chevron-circle-left"></i>
-           </Link>
-          <p className="m-2 flex-grow">
-            <span className="underline">Progress</span>: {questionNo + 1}/
-            {totalQuestions}
-          </p>
-         </div>
+          <div className="flex align items-center">
+            <Link to="/" className="px-2 py-1 rounded-full hover:bg-blue-200">
+              <i className="fas fa-chevron-circle-left"></i>
+            </Link>
+            <p className="m-2 flex-grow">
+              <span className="underline">Progress</span>: {questionNo + 1}/
+              {totalQuestions}
+            </p>
+          </div>
           <p className="p-2 italic font-medium text-xl">
             {selectedQuiz.questions[questionNo].question}
           </p>

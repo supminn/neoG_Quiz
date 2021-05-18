@@ -1,10 +1,6 @@
 ## Future Enhancements
 * Show correct answer for each question. Style the result page.
-* Add rules before entering the quiz.
-* Multiple quizes based on each topic - JRD, RA, TJRCC-Nate.
 * Quiz unlocks by scoring a threshold in the previous quiz.
-* Based on the above selection, individual quiz is choosen.
-* After completing the quiz, it is grayed out. Or count the no. of attempts
 * Add timer to take it to the next level.
 * Share score, ask friends to take up the challenge
 * Show the correct answers and the points break-up

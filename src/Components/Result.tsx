@@ -10,7 +10,7 @@ export const Result = () => {
   useEffect(() => {
       dispatch({type: UPDATE_HIGHSCORE, payload:{quizName, score}})
   },[]);
-  
+
     return(
         <>
           <h3 className="text-2xl">

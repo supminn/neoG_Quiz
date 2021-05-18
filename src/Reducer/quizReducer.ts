@@ -57,7 +57,7 @@ export const quizReducer = (state: State, action: Action) => {
       return {
         ...state,
         score: 0,
-        questionNo: 1,
+        questionNo: 0,
       };
     case UPDATE_ATTEMPT:
       return {

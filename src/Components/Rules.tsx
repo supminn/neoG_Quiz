@@ -12,13 +12,12 @@ export const Rules = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4 ">
-         <Link to="/" className="px-2 py-1 rounded-full hover:bg-blue-200 absolute top-2 left-2">
-           {/* <i className="fas fa-angle-left"></i> */}
-           <i className="fas fa-chevron-circle-left"></i>
+         <Link to="/" className="font-medium px-2 py-1 rounded-full hover:bg-blue-200 absolute top-2 left-2">
+           <i className="fas fa-chevron-circle-left"></i> Home
            </Link>
       <div className="max-w-lg w-full rounded-lg shadow-lg p-4 bg-white">
         <h3 className="font-semibold text-lg text-blue-800 tracking-wide mb-2">
-          Quiz Details
+          Instructions
         </h3>
         <ul className="list-inside mb-1 text-left">
           <li className="py-2">

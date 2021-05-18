@@ -8,6 +8,7 @@ export type Questions = {
   points: number;
   negativePoints?:number;
   options: Array<Options>;
+  image?: string;
 };
 
 export type Quiz = {

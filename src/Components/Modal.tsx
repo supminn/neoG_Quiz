@@ -1,8 +1,19 @@
 import { useQuizContext } from "../Context/QuizProvider";
 import { RESET } from "../Reducer/typeValues";
+import { createTimer } from "../Utils/timer";
 
-export const Modal = ({ setShowModal }: {setShowModal: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const {dispatch} = useQuizContext();
+export const Modal = ({
+  setShowModal,
+  restart,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  restart: (
+    newExpiryTimestamp: number,
+    autoStart?: boolean | undefined
+  ) => void;
+}) => {
+  
+  const { dispatch } = useQuizContext();
 
   return (
     <div
@@ -61,6 +72,7 @@ export const Modal = ({ setShowModal }: {setShowModal: React.Dispatch<React.SetS
               onClick={() => {
                 dispatch({ type: RESET });
                 setShowModal(false);
+                restart(createTimer());
               }}
             >
               Restart

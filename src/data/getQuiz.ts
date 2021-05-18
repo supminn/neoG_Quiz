@@ -1,4 +1,20 @@
 import { Quiz, Quizzes } from "./Quiz.type";
+import EQ1 from "../Assets/EQ1.png";
+import EQ2 from "../Assets/EQ2.png";
+import EQ3 from "../Assets/EQ3.png";
+import EQ4 from "../Assets/EQ4.png";
+import EQ5 from "../Assets/EQ5.png";
+import MQ1 from "../Assets/MQ1.png";
+import MQ2 from "../Assets/MQ2.png";
+import MQ3 from "../Assets/MQ3.png";
+import MQ4 from "../Assets/MQ4.png";
+import MQ5 from "../Assets/MQ5.png";
+import HQ1 from "../Assets/HQ1.png";
+import HQ2 from "../Assets/HQ2.png";
+import HQ3 from "../Assets/HQ3.png";
+import HQ4 from "../Assets/HQ4.png";
+import HQ5 from "../Assets/HQ5.png";
+
 
 export const BasicQuiz: Quiz = {
   quizName: "Basic Jump Rope Quiz",
@@ -7,6 +23,7 @@ export const BasicQuiz: Quiz = {
     {
       question: "What is jump roping also known as?",
       points: 10,
+      image: EQ1,
       options: [
         {
           value: "Rope Skipping",
@@ -30,6 +47,7 @@ export const BasicQuiz: Quiz = {
       question:
         "What is the easiest way of measuring jump rope's height? Where should the handles come up to?",
       points: 10,
+      image:EQ2,
       options: [
         {
           value: "Head",
@@ -52,6 +70,7 @@ export const BasicQuiz: Quiz = {
     {
       question: "Where should one's hands be placed while jumping rope?",
       points: 10,
+      image:EQ3,
       options: [
         {
           value: "By the hips",
@@ -75,6 +94,7 @@ export const BasicQuiz: Quiz = {
       question:
         "Ideally, how high should one jump for the rope to go over and complete a rotation?",
       points: 10,
+      image:EQ4,
       options: [
         {
           value: "As high as possible",
@@ -97,6 +117,7 @@ export const BasicQuiz: Quiz = {
     {
       question: "What is the right technique of jumping?",
       points: 10,
+      image:EQ5,
       options: [
         {
           value: "Place you complete foot down after each jump",
@@ -120,12 +141,13 @@ export const BasicQuiz: Quiz = {
 };
 
 export const JrdQuiz: Quiz = {
-  quizName: "Quiz related to Jump Rope Dudes",
+  quizName: "The Jump Rope Dudes Quiz",
   level: "Medium",
   questions: [
     {
       question: "Which brand does the Jump Rope Dudes endorse?",
       points: 10,
+      image: MQ1,
       negativePoints: 5,
       options: [
         {
@@ -149,6 +171,7 @@ export const JrdQuiz: Quiz = {
     {
       question: "Who are the Jump Rope Dudes?",
       points: 10,
+      image: MQ2,
       negativePoints: 5,
       options: [
         {
@@ -172,6 +195,7 @@ export const JrdQuiz: Quiz = {
     {
       question: "What is the slogan Jump Rope Dudes promote?",
       points: 10,
+      image: MQ3,
       negativePoints: 5,
       options: [
         {
@@ -195,6 +219,7 @@ export const JrdQuiz: Quiz = {
     {
       question: "What is the ideal way to lose weight, get lean?",
       points: 10,
+      image: MQ4,
       negativePoints: 5,
       options: [
         {
@@ -219,6 +244,7 @@ export const JrdQuiz: Quiz = {
       question:
         "How long should one jump rope session be according to the jump rope dudes?",
       points: 10,
+      image: MQ5,
       negativePoints: 5,
       options: [
         {
@@ -243,12 +269,13 @@ export const JrdQuiz: Quiz = {
 };
 
 export const FancyQuiz: Quiz = {
-  quizName: "Jump Rope tricks",
+  quizName: "Jump Rope Tricks Quiz",
   level: "Hard",
   questions: [
     {
       question: "Nateflix is a colaborations between?",
       points: 10,
+      image:HQ1,
       negativePoints: 5,
       options: [
         {
@@ -270,31 +297,9 @@ export const FancyQuiz: Quiz = {
       ],
     },
     {
-      question: "Where is Jump Rope Coach Chris based out of?",
-      points: 10,
-      negativePoints: 5,
-      options: [
-        {
-          value: "United States of America",
-          isRight: false,
-        },
-        {
-          value: "United Arab Emirates",
-          isRight: false,
-        },
-        {
-          value: "United Kingdom",
-          isRight: true,
-        },
-        {
-          value: "Australia",
-          isRight: false,
-        },
-      ],
-    },
-    {
       question: "What is Nateflix?",
       points: 10,
+      image:HQ2,
       negativePoints: 5,
       options: [
         {
@@ -320,8 +325,33 @@ export const FancyQuiz: Quiz = {
       ],
     },
     {
+      question: "Where is Jump Rope Coach Chris based out of?",
+      points: 10,
+      image:HQ3,
+      negativePoints: 5,
+      options: [
+        {
+          value: "United States of America",
+          isRight: false,
+        },
+        {
+          value: "United Arab Emirates",
+          isRight: false,
+        },
+        {
+          value: "United Kingdom",
+          isRight: true,
+        },
+        {
+          value: "Australia",
+          isRight: false,
+        },
+      ],
+    },
+    {
       question: "How does Coach Chris teach combos on instagram?",
       points: 10,
+      image:HQ4,
       negativePoints: 5,
       options: [
         {
@@ -347,6 +377,7 @@ export const FancyQuiz: Quiz = {
     {
       question: "What type of ropes does Chris and Nate use?",
       points: 10,
+      image:HQ5,
       negativePoints: 5,
       options: [
         {

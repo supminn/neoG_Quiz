@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizes } from "../Data/getQuiz";
+import { quizzes } from "../Data/getQuiz";
+import { Quiz } from "../Data/Quiz.type";
 import { DECREMENT, INCREMENT, UPDATE_ATTEMPT } from "../Reducer/typeValues";
 import { primaryBtn, optionBtn } from "../Styles/Style";
 import { Modal } from "./Modal";
@@ -15,7 +16,7 @@ export const QuizData = () => {
     dispatch,
   } = useQuizContext();
 
-  const selectedQuiz: Quiz = quizes.find((quiz) => quiz.quizName === quizName)!;
+  const selectedQuiz: Quiz = quizzes.find((quiz) => quiz.quizName === quizName)!;
 
   const totalQuestions: number = selectedQuiz.questions.length;
 

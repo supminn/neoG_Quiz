@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizes } from "../Data/getQuiz";
+import { quizzes } from "../Data/getQuiz";
 import { SET_QUIZ } from "../Reducer/typeValues";
 import { primaryBtn, header1, secondaryBtn } from "../Styles/Style";
 
@@ -23,7 +23,7 @@ export const Home = () => {
         have a negative marking while the others may not. To make it easier,
         mulitple attempts are allowed!
       </p>
-      {quizes.map((quiz) => (
+      {quizzes.map((quiz) => (
         <button
           className={primaryBtn}
           key={quiz.quizName}

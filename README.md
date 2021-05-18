@@ -1,4 +1,6 @@
 ## Future Enhancements
+* Show correct answer for each question. Style the result page.
+* Add rules before entering the quiz.
 * Multiple quizes based on each topic - JRD, RA, TJRCC-Nate.
 * Quiz unlocks by scoring a threshold in the previous quiz.
 * Based on the above selection, individual quiz is choosen.
@@ -6,7 +8,8 @@
 * Add timer to take it to the next level.
 * Tailwind CSS for styling.
 * Share score, ask friends to take up the challenge
-* Show the currect answers and the points break-up
+* Show the correct answers and the points break-up
+* Paging for quiz data. Only when that quiz is selected, load it.
 * [Design](https://dribbble.com/shots/15601528-BioMorphik)
 [one more](https://dribbble.com/shots/15610989-PPDP-Planner-Onboarding)
 # Getting Started with Create React App

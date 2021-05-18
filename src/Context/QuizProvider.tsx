@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { initialState, quizReducer } from "../Reducer/quizReducer";
+import { ContextType } from "./Context.type";
 
 const QuizContext = createContext<ContextType>({} as ContextType);
 

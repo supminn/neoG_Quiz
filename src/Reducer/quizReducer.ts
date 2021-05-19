@@ -48,11 +48,11 @@ export const quizReducer = (state: State, action: Action) => {
         ...state,
         score: state.score - val,
       };
-      case NEXT_QUESTION:
-        return {
-          ...state,
-          questionNo: state.questionNo + 1
-        }
+    case NEXT_QUESTION:
+      return {
+        ...state,
+        questionNo: state.questionNo + 1,
+      };
     case RESET:
       return {
         ...state,

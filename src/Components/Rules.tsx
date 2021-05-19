@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizzes } from "../Data/getQuiz";
 
@@ -29,20 +28,27 @@ export const Rules = () => {
           </li>
 
           <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> Each question is of <em className="font-semibold">10</em> points.
+            <i className="fab fa-gg-circle fa-lg"></i> Each question is of{" "}
+            <em className="font-semibold">10</em> points.
           </li>
 
           <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> You get <b>30 seconds</b> to answer each question.
+            <i className="fab fa-gg-circle fa-lg"></i> You get <b>30 seconds</b>{" "}
+            to answer each question.
           </li>
 
           <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> Score <em className="font-semibold">70%</em> or above to unlock the next level
+            <i className="fab fa-gg-circle fa-lg"></i> Score{" "}
+            <em className="font-semibold">70%</em> or above to unlock the next
+            level
           </li>
 
-         {quizDetail?.level!=="Easy" && <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has a negative marking of <b>5</b> points
-          </li>}
+          {quizDetail?.level !== "Easy" && (
+            <li className="py-2">
+              <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has
+              a negative marking of <b>5</b> points
+            </li>
+          )}
         </ul>
         <div>
           <button

@@ -5,7 +5,7 @@ import { createTimer } from "../Utils/timer";
 export const Modal = ({
   setShowModal,
   restart,
-  setShowAnswer
+  setShowAnswer,
 }: {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setShowAnswer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +14,6 @@ export const Modal = ({
     autoStart?: boolean | undefined
   ) => void;
 }) => {
-  
   const { dispatch } = useQuizContext();
 
   return (

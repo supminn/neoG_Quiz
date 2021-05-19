@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizzes } from "../Data/getQuiz";
 import { SET_QUIZ } from "../Reducer/typeValues";
-import { primaryBtn, header1, secondaryBtn } from "../Styles/Style";
+import { header1, secondaryBtn } from "../Styles/Style";
+import Hero from "../Assets/home.svg";
+import Pic1 from "../Assets/Basic.png";
+import Pic2 from "../Assets/JRD.png";
+import Pic3 from "../Assets/Trick.png";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -11,32 +15,41 @@ export const Home = () => {
 
   return (
     <>
-      <h1 className={header1}>Jump Rope Quizes</h1>
+      <h2 className={header1}>
+        Welcome to <em>SupQuiz</em>
+      </h2>
+      <div className="lg:flex lg:items-center lg:justify-evenly lg:w-3/4 lg:m-auto">
+      <img className="p-4 w-full sm:w-3/4 m-auto" src={Hero} alt="Quiz Hero" />
+      <div className="lg:flex lg:flex-col-reverse">
       <Link to="/score-board">
         <button className={secondaryBtn}>
-          View My Stats
+          <i className="fas fa-info-circle"></i> View My Statistics
         </button>
       </Link>
-      <p>
-        Choose one of the following quizes to get started. They are presented
-        according to the level of difficulty. Note that some questions might
-        have a negative marking while the others may not. To make it easier,
-        mulitple attempts are allowed!
+      <p className="p-3 md:text-lg lg:text-xl">
+        Want to <em className="font-medium">test</em> your knowledge on{" "}
+        <span className="text-lg  md:text-xl lg:text-2xl font-medium">Jump Rope</span>? You have reached
+        the right place 😎. We have <i className="fab fa-css3-alt fa-lg"></i> featured Quizzes
       </p>
-      {quizzes.map((quiz) => (
+      </div>
+      </div>
+      <h1 className="text-2xl font-bold mb-1 font-cursive"><i className="fas fa-arrow-left fa-sm"></i> Get Set JUMP! <i className="fas fa-arrow-right fa-sm"></i></h1>
+      {quizzes.map((quiz, index) => (
         <button
-          className={primaryBtn}
+          className="border-2 border-blue-200 hover:shadow-2xl hover:border-blue-900 m-2 rounded-lg"
           key={quiz.quizName}
           onClick={() => {
             dispatch({ type: SET_QUIZ, payload: quiz.quizName });
             navigate("/rules");
           }}
         >
-          {quiz.quizName}
+          <img
+            className="w-60 rounded-lg"
+            src={index === 0 ? Pic1 : index === 1 ? Pic2 : Pic3}
+            alt={`Pic-${index + 1}`}
+          />
         </button>
       ))}
-
-      {/* <button className={primaryBtn} disabled>Disabled</button> */}
     </>
   );
 };

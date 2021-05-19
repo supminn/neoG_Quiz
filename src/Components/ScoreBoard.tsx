@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { primaryBtn } from "../Styles/Style";
 
 export const ScoreBoard = () => {
   const {
@@ -8,10 +6,7 @@ export const ScoreBoard = () => {
   } = useQuizContext();
 
   return (
-    <>
-        {/* <Link to="/" className="float-left font-medium px-2 py-1 rounded-full hover:bg-blue-200">
-           <i className="fas fa-chevron-circle-left"></i> Home
-           </Link> */}
+    <div className="md:px-4 lg:px-12">
       <h2 className="text-xl font-medium mb-2"> Score Board and Statistics</h2>
       <table className="rounded-t-lg m-5 w-full mx-auto bg-blue-200 text-blue-800">
         <thead>
@@ -31,6 +26,6 @@ export const ScoreBoard = () => {
         ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };

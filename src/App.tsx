@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useQuizContext } from "./Context/QuizProvider";
 import { Rules } from "./Components/Rules";
 import { Navigation } from "./Components/Navigation";
-import { Result } from "./Components/Result";
+import { Profile } from "./Components/Profile";
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
         <Route path="/quiz" element={<QuizData/>}/>
         <Route path="/score-board" element={<ScoreBoard/>}/>
         <Route path="/rules" element={<Rules/>}/>
-        <Route path="/res" element={<Result/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
       </div>
     </div>

@@ -1,5 +1,5 @@
 ## Future Enhancements
-* Style the home page, result page. Responsive design
+* Style the home page, result page.
 * Quiz unlocks by scoring a threshold in the previous quiz.
 * Stats for individual user, score board for overall. - localstorage
 * Share score, ask friends to take up the challenge

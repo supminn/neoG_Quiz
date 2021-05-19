@@ -18,8 +18,9 @@ function App() {
   }, [])
 
   return (
-    <div className="text-center text-blue-900 bg-blue-50 h-screen">
+    <div className="text-center text-blue-900 bg-blue-50 h-full min-h-screen">
       <Navigation/>
+      <div className="px-2">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/quiz" element={<QuizData/>}/>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/rules" element={<Rules/>}/>
         <Route path="/res" element={<Result/>}/>
       </Routes>
+      </div>
     </div>
   );
 }

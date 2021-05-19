@@ -11,11 +11,8 @@ export const Rules = () => {
   const quizDetail = quizzes.find((quiz) => quiz.quizName === quizName);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 ">
-         {/* <Link to="/" className="font-medium px-2 py-1 rounded-full hover:bg-blue-200 absolute top-16 left-2">
-           <i className="fas fa-chevron-circle-left"></i> Home
-           </Link> */}
-      <div className="max-w-lg w-full rounded-lg shadow-lg p-4 bg-white">
+    <section className="flex items-center justify-center px-4 ">
+      <div className="mt-16 w-full rounded-lg shadow-lg p-4 bg-white md:w-3/4 lg:w-6/12">
         <h3 className="font-semibold text-lg text-blue-800 tracking-wide mb-2">
           Instructions
         </h3>
@@ -44,7 +41,7 @@ export const Rules = () => {
           </li>
 
          {quizDetail?.level!=="Easy" && <li className="py-2">
-            <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has a negative marking of 5 points
+            <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has a negative marking of <b>5</b> points
           </li>}
         </ul>
         <div>

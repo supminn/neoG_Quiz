@@ -74,11 +74,11 @@ export const QuizData = () => {
   };
 
   return (
-    <div className="p-2">
+    <>
       {questionNo + 1 > totalQuestions && <Result />}
       {questionNo + 1 <= totalQuestions && (
         <div>
-          <div className="flex align items-center">
+          <div className="flex align items-center md:w-3/4 lg:w-1/2 m-auto">
             <Link to="/" className="px-2 py-1 rounded-full hover:bg-blue-200">
               <i className="fas fa-chevron-circle-left"></i>
             </Link>
@@ -87,7 +87,7 @@ export const QuizData = () => {
               {totalQuestions}
             </p>
             <span
-              className={`font-medium ${
+              className={`font-medium md:text-lg lg:text-xl ${
                 seconds < 11 && seconds > 0
                   ? "animate-bounce text-red-600"
                   : "animate-pulse"
@@ -96,7 +96,7 @@ export const QuizData = () => {
               0{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
             </span>
           </div>
-          <img className="w-full m-auto h-auto" src={selectedQuiz.questions[questionNo].image} alt="jump rope quiz"/>
+          <img className="w-full m-auto h-auto md:w-3/4 lg:w-1/3" src={selectedQuiz.questions[questionNo].image} alt="jump rope quiz"/>
           <h3 className="p-2 italic font-medium text-xl">
             {selectedQuiz.questions[questionNo].question}
           </h3>
@@ -132,7 +132,7 @@ export const QuizData = () => {
         </div>
       )}
 
-      {showModal && <Modal setShowModal={setShowModal} restart={restart} />}
-    </div>
+      {showModal && <Modal setShowModal={setShowModal} restart={restart} setShowAnswer={setShowAnswer}/>}
+    </>
   );
 };

@@ -1,12 +1,10 @@
 ## Future Enhancements
-* Style the home page, result page.
 * Quiz unlocks by scoring a threshold in the previous quiz.
 * Stats for individual user, score board for overall. - localstorage
 * Share score, ask friends to take up the challenge
 * Show points break-up.
 * Paging for quiz data. Only when that quiz is selected, load it.
-* [Design](https://dribbble.com/shots/15601528-BioMorphik)
-  [one more](https://dribbble.com/shots/15610989-PPDP-Planner-Onboarding)
+
 
 # Getting Started with Create React App
 

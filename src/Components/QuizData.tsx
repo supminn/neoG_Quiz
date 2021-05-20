@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTimer } from "react-timer-hook";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizzes } from "../Data/getQuiz";
-import { Options, Quiz } from "../Data/Quiz.type";
+import { quizzes } from "../data/getQuiz";
+import { Options, Quiz } from "../data/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,

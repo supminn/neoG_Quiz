@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { SET_STATS } from "./Reducer/typeValues";
 import { useEffect } from "react";
 import { useQuizContext } from "./Context/QuizProvider";
-import { quizzes } from "./Data/getQuiz";
+import { quizzes } from "./data/getQuiz";
 
 function App() {
   const { dispatch } = useQuizContext();

@@ -1,4 +1,4 @@
-import { Quizzes } from "../Data/Quiz.type";
+import { Quizzes } from "../data/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,

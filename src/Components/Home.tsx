@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizzes } from "../Data/getQuiz";
+import { quizzes } from "../data/getQuiz";
 import { SET_QUIZ } from "../Reducer/typeValues";
 import { header1, secondaryBtn } from "../Styles/Style";
 import Hero from "../Assets/home.svg";

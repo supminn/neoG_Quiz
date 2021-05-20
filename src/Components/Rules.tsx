@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizzes } from "../Data/getQuiz";
+import { quizzes } from "../data/getQuiz";
 
 export const Rules = () => {
   const navigate = useNavigate();

@@ -5,6 +5,7 @@ import {
   Rules,
   Navigation,
   Profile,
+  Footer,
 } from "./Components";
 import { Routes, Route } from "react-router-dom";
 import { SET_STATS } from "./Reducer/typeValues";
@@ -22,7 +23,7 @@ function App() {
   return (
     <div className="text-center text-blue-900 bg-blue-50 h-full min-h-screen">
       <Navigation />
-      <div className="px-2">
+      <div className="px-2 min-h-body">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quiz" element={<QuizData />} />
@@ -31,6 +32,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

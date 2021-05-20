@@ -6,6 +6,9 @@ module.exports = {
       fontFamily:{
         cursive:['Dancing Script'],
         pacifico: ['pacifico'],
+      },
+      minHeight:{
+        'body':'78vh',
       }
     },
   },

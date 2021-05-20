@@ -6,3 +6,4 @@ export { QuizData } from "./QuizData";
 export { Result } from "./Result";
 export { Rules } from "./Rules";
 export { ScoreBoard } from "./ScoreBoard";
+export { Footer } from "./Footer";

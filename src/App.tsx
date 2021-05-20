@@ -10,12 +10,13 @@ import { Routes, Route } from "react-router-dom";
 import { SET_STATS } from "./Reducer/typeValues";
 import { useEffect } from "react";
 import { useQuizContext } from "./Context/QuizProvider";
+import { quizzes } from "./Data/getQuiz";
 
 function App() {
   const { dispatch } = useQuizContext();
 
   useEffect(() => {
-    dispatch({ type: SET_STATS });
+    dispatch({ type: SET_STATS, payload: quizzes });
   }, []);
 
   return (

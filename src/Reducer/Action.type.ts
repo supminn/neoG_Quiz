@@ -1,3 +1,4 @@
+import { Quizzes } from "../Data/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,
@@ -17,6 +18,7 @@ export type Action =
     }
   | {
       type: typeof SET_STATS;
+      payload: Quizzes;
     }
   | {
       type: typeof INCREMENT;

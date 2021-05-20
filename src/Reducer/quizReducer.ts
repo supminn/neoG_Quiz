@@ -1,4 +1,3 @@
-import { quizzes } from "../Data/getQuiz";
 import { Action } from "./Action.type";
 import { State } from "./State.type";
 import {
@@ -31,7 +30,7 @@ export const quizReducer = (state: State, action: Action) => {
     case SET_STATS:
       return {
         ...state,
-        stats: quizzes.map((quiz) => ({
+        stats: action.payload.map((quiz) => ({
           name: quiz.quizName,
           highScore: 0,
           attempt: 0,

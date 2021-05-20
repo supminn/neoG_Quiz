@@ -41,15 +41,20 @@ export const QuizData = () => {
   });
 
   useEffect(() => {
-    dispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
     start();
   }, []);
 
   useEffect(() => {
-    if(questionNo + 1 > totalQuestions){
+    if (questionNo + 1 === 1) {
+      dispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
+    }
+  }, [questionNo]);
+
+  useEffect(() => {
+    if (questionNo + 1 > totalQuestions) {
       pause();
     }
-  },[questionNo]);
+  }, [questionNo]);
 
   const updateAnswer = (option: Options) => {
     if (option.isRight) {
@@ -97,46 +102,59 @@ export const QuizData = () => {
             </span>
           </div>
           <section className="lg:flex lg:justify-center lg:items-start lg:p-4">
-          <img className="w-full m-auto h-auto md:w-3/4 lg:w-1/3  flex-grow" src={selectedQuiz.questions[questionNo].image} alt="jump rope quiz"/>
-          <div className="flex-grow w-1/2">
-          <h3 className="p-2 italic font-medium text-xl">
-            {selectedQuiz.questions[questionNo].question}
-          </h3>
-          {selectedQuiz.questions[questionNo].options.map((option) => (
-            <button
-            disabled={showAnswer}
-              className={
-                showAnswer
-                  ? option.isRight
-                    ? optionRight
-                    : optionWrong
-                  : optionBtn
-              }
-              key={option.value}
-              onClick={() => updateAnswer(option)}
-            >
-              {option.value}
-            </button>
-          ))}
-          {showAnswer ? (
-            <button className={primaryBtn} onClick={moveFurther}>
-              {questionNo + 1 < totalQuestions ? (
-                <i className="fas fa-arrow-right"> Next</i>
+            <img
+              className="w-full m-auto h-auto md:w-3/4 lg:w-1/3  flex-grow"
+              src={selectedQuiz.questions[questionNo].image}
+              alt="jump rope quiz"
+            />
+            <div className="flex-grow w-1/2">
+              <h3 className="p-2 italic font-medium text-xl">
+                {selectedQuiz.questions[questionNo].question}
+              </h3>
+              {selectedQuiz.questions[questionNo].options.map((option) => (
+                <button
+                  disabled={showAnswer}
+                  className={
+                    showAnswer
+                      ? option.isRight
+                        ? optionRight
+                        : optionWrong
+                      : optionBtn
+                  }
+                  key={option.value}
+                  onClick={() => updateAnswer(option)}
+                >
+                  {option.value}
+                </button>
+              ))}
+              {showAnswer ? (
+                <button className={primaryBtn} onClick={moveFurther}>
+                  {questionNo + 1 < totalQuestions ? (
+                    <i className="fas fa-arrow-right"> Next</i>
+                  ) : (
+                    "Submit"
+                  )}
+                </button>
               ) : (
-                "Submit"
+                <button
+                  className={primaryBtn}
+                  onClick={() => setShowModal(true)}
+                >
+                  Restart
+                </button>
               )}
-            </button>
-          ) : (
-            <button className={primaryBtn} onClick={() => setShowModal(true)}>
-              Restart
-            </button>
-          )}
-          </div>
+            </div>
           </section>
         </>
       )}
 
-      {showModal && <Modal setShowModal={setShowModal} restart={restart} setShowAnswer={setShowAnswer}/>}
+      {showModal && (
+        <Modal
+          setShowModal={setShowModal}
+          restart={restart}
+          setShowAnswer={setShowAnswer}
+        />
+      )}
     </>
   );
 };

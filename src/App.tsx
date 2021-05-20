@@ -8,17 +8,8 @@ import {
   Footer,
 } from "./Components";
 import { Routes, Route } from "react-router-dom";
-import { SET_STATS } from "./Reducer/typeValues";
-import { useEffect } from "react";
-import { useQuizContext } from "./Context/QuizProvider";
-import { quizzes } from "./data/getQuiz";
 
 function App() {
-  const { dispatch } = useQuizContext();
-
-  useEffect(() => {
-    dispatch({ type: SET_STATS, payload: quizzes });
-  }, []);
 
   return (
     <div className="text-center text-blue-900 bg-blue-50 h-full min-h-screen">

@@ -1,22 +1,28 @@
-import { Stats } from "fs";
+import { quizzes } from "../data/getQuiz";
 import { Action } from "./Action.type";
 import { State } from "./State.type";
 import {
+  CLEAR_STATS,
   DECREMENT,
   INCREMENT,
   NEXT_QUESTION,
   RESET,
   SET_QUIZ,
-  SET_STATS,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
 } from "./typeValues";
+
+const initialStats = quizzes.map((quiz) => ({
+  name: quiz.quizName,
+  highScore: 0,
+  attempt: 0,
+}));
 
 export const initialState: State = {
   score: 0,
   questionNo: 0,
   quizName: "",
-  stats: [],
+  stats: JSON.parse(localStorage.getItem("Stats")!) || initialStats,
 };
 
 export const quizReducer = (state: State, action: Action) => {
@@ -28,39 +34,35 @@ export const quizReducer = (state: State, action: Action) => {
         score: 0,
         questionNo: 0,
       };
-    case SET_STATS:
-      return {
-        ...state,
-        stats: action.payload.map((quiz) => ({
-          name: quiz.quizName,
-          highScore: 0,
-          attempt: 0,
-        })),
-      };
+
     case INCREMENT:
       return {
         ...state,
         score: state.score + action.payload,
       };
+
     case DECREMENT:
       let val = action?.payload ? action.payload : 0;
       return {
         ...state,
         score: state.score - val,
       };
+
     case NEXT_QUESTION:
       return {
         ...state,
         questionNo: state.questionNo + 1,
       };
+
     case RESET:
       return {
         ...state,
         score: 0,
         questionNo: 0,
       };
-    case UPDATE_ATTEMPT:
-      return {
+
+    case UPDATE_ATTEMPT: {
+      const updatedState = {
         ...state,
         stats: state.stats.map((stat) =>
           stat.name === action.payload.quizName
@@ -68,8 +70,12 @@ export const quizReducer = (state: State, action: Action) => {
             : stat
         ),
       };
-    case UPDATE_HIGHSCORE:
-      return {
+      localStorage.setItem("Stats", JSON.stringify(updatedState.stats));
+      return updatedState;
+    }
+
+    case UPDATE_HIGHSCORE: {
+      const updatedState = {
         ...state,
         stats: state.stats.map((stat) =>
           stat.name === action.payload.quizName
@@ -79,6 +85,17 @@ export const quizReducer = (state: State, action: Action) => {
             : stat
         ),
       };
+      localStorage.setItem("Stats", JSON.stringify(updatedState.stats));
+      return updatedState;
+    }
+
+    case CLEAR_STATS:
+      localStorage.removeItem("Stats");
+      return {
+        ...state,
+        stats: initialStats,
+      };
+
     default:
       return state;
   }

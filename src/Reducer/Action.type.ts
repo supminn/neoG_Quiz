@@ -1,24 +1,18 @@
-import { Quizzes } from "../data/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,
   RESET,
   SET_QUIZ,
-  SET_STATS,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
-  UNLOCK_QUIZ,
   NEXT_QUESTION,
+  CLEAR_STATS,
 } from "./typeValues";
 
 export type Action =
   | {
       type: typeof SET_QUIZ;
       payload: string;
-    }
-  | {
-      type: typeof SET_STATS;
-      payload: Quizzes;
     }
   | {
       type: typeof INCREMENT;
@@ -43,7 +37,7 @@ export type Action =
       };
     }
   | {
-      type: typeof UNLOCK_QUIZ;
+      type: typeof CLEAR_STATS;
     }
   | {
       type: typeof NEXT_QUESTION;

@@ -1,12 +1,18 @@
+import { useEffect } from "react";
 import { useQuizContext } from "../Context/QuizProvider";
 import { CLEAR_STATS } from "../Reducer/typeValues";
 import { secondaryBtn } from "../Styles/Style";
 
 export const ScoreBoard = () => {
   const {
-    state: { stats },
-    dispatch,
+    quizState: { stats },
+    quizDispatch,
   } = useQuizContext();
+
+  useEffect(() => {
+    document.title = "SupQuiz | Scores"
+  }, []);
+
 
   return (
     <div className="md:px-4 lg:px-12">
@@ -34,7 +40,7 @@ export const ScoreBoard = () => {
       </table>
       <button
         className={secondaryBtn}
-        onClick={() => dispatch({ type: CLEAR_STATS })}
+        onClick={() => quizDispatch({ type: CLEAR_STATS })}
       >
         <i className="fas fa-eraser fa-lg"></i> Clear Stats
       </button>

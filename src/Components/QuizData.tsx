@@ -25,15 +25,15 @@ export const QuizData = () => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const {
-    state: { questionNo, quizName },
-    dispatch,
+    quizState: { questionNo, quizName },
+    quizDispatch,
   } = useQuizContext();
 
-  const selectedQuiz: Quiz = quizzes.find(
+  const selectedQuiz = quizzes.find(
     (quiz) => quiz.quizName === quizName
   )!;
 
-  const totalQuestions: number = selectedQuiz.questions.length;
+  const totalQuestions = selectedQuiz.questions.length;
 
   const { seconds, minutes, start, restart, pause } = useTimer({
     expiryTimestamp: createTimer(),
@@ -41,12 +41,13 @@ export const QuizData = () => {
   });
 
   useEffect(() => {
+    document.title = `SupQuiz | ${selectedQuiz.level}`
     start();
   }, []);
 
   useEffect(() => {
     if (questionNo + 1 === 1) {
-      dispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
+      quizDispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
     }
   }, [questionNo]);
 
@@ -58,12 +59,12 @@ export const QuizData = () => {
 
   const updateAnswer = (option: Options) => {
     if (option.isRight) {
-      dispatch({
+      quizDispatch({
         type: INCREMENT,
         payload: selectedQuiz.questions[questionNo].points,
       });
     } else {
-      dispatch({
+      quizDispatch({
         type: DECREMENT,
         payload: selectedQuiz.questions[questionNo].negativePoints,
       });
@@ -74,7 +75,7 @@ export const QuizData = () => {
 
   const moveFurther = () => {
     setShowAnswer(false);
-    dispatch({ type: NEXT_QUESTION });
+    quizDispatch({ type: NEXT_QUESTION });
     restart(createTimer());
   };
 

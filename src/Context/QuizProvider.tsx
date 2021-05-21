@@ -7,10 +7,10 @@ const QuizContext = createContext<ContextType>({} as ContextType);
 export const useQuizContext = () => useContext(QuizContext);
 
 export const QuizProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(quizReducer, initialState);
+  const [quizState, quizDispatch] = useReducer(quizReducer, initialState);
 
   return (
-    <QuizContext.Provider value={{ state, dispatch }}>
+    <QuizContext.Provider value={{ quizState, quizDispatch }}>
       {children}
     </QuizContext.Provider>
   );

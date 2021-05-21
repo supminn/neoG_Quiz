@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useQuizContext } from "../Context/QuizProvider";
 import { quizzes } from "../data/getQuiz";
@@ -5,9 +6,13 @@ import { quizzes } from "../data/getQuiz";
 export const Rules = () => {
   const navigate = useNavigate();
   const {
-    state: { quizName },
+    quizState: { quizName },
   } = useQuizContext();
   const quizDetail = quizzes.find((quiz) => quiz.quizName === quizName);
+
+  useEffect(() => {
+    document.title = "SupQuiz | Rules"
+  }, []);
 
   return (
     <section className="flex items-center justify-center px-4 ">

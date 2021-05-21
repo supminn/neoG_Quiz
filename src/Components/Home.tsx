@@ -8,10 +8,15 @@ import Hero from "../Assets/home.svg";
 import Pic1 from "../Assets/Basic.png";
 import Pic2 from "../Assets/JRD.png";
 import Pic3 from "../Assets/Trick.png";
+import { useEffect } from "react";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const { dispatch } = useQuizContext();
+  const { quizDispatch } = useQuizContext();
+
+  useEffect(() => {
+    document.title = "SupQuiz | Home"
+  }, []);
 
   return (
     <>
@@ -39,7 +44,7 @@ export const Home = () => {
           className="border-2 border-blue-200 hover:shadow-2xl hover:border-blue-900 m-2 rounded-lg"
           key={quiz.quizName}
           onClick={() => {
-            dispatch({ type: SET_QUIZ, payload: quiz.quizName });
+            quizDispatch({ type: SET_QUIZ, payload: quiz.quizName });
             navigate("/rules");
           }}
         >

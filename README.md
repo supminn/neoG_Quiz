@@ -1,9 +1,9 @@
 ## Future Enhancements
 * Quiz unlocks by scoring a threshold in the previous quiz.
-* Stats for individual user, score board for overall. - localstorage
+* Stats for an individual user, displaying score board for overall. - localstorage
 * Share score, ask friends to take up the challenge
 * Show points break-up.
-* Paging for quiz data. Only when that quiz is selected, load it.
+* Paging for quiz data. Load the quiz just before it starts.
 
 
 # Getting Started with Create React App

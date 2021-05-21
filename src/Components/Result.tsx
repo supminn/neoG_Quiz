@@ -5,16 +5,23 @@ import { primaryBtn, secondaryBtn } from "../Styles/Style";
 import Party from "../Assets/Party.png";
 import Sad from "../Assets/Sad.svg";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export const Result = () => {
   const {
-    state: { score, quizName },
-    dispatch,
+    quizState: { score, quizName },
+    quizDispatch,
   } = useQuizContext();
   const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch({ type: UPDATE_HIGHSCORE, payload: { quizName, score } });
+    document.title = "SupQuiz | Results"
   }, []);
+
+  useEffect(() => {
+    quizDispatch({ type: UPDATE_HIGHSCORE, payload: { quizName, score } });
+  }, []);
+
   return (
     <div className="lg:flex lg:justify-center lg:items-center">
       <img
@@ -28,13 +35,18 @@ export const Result = () => {
         </h3>
         <button
           className={secondaryBtn}
-          onClick={() => dispatch({ type: RESET })}
+          onClick={() => quizDispatch({ type: RESET })}
         >
           Replay this Quiz
         </button>
         <button className={primaryBtn} onClick={() => navigate("/")}>
           Play other Quizzes
         </button>
+        <Link to="/score-board">
+        <button className={secondaryBtn}>
+          <i className="fas fa-info-circle"></i> View My Statistics
+        </button>
+      </Link>
       </div>
     </div>
   );

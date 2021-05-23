@@ -1,5 +1,6 @@
 export const allQuizes = `query MyQuery {
     Quiz {
+      id
       quizName
       level
       questions {
@@ -15,3 +16,59 @@ export const allQuizes = `query MyQuery {
     }
   }`;
   
+export const levelEasy = `query MyQuery {
+  Quiz(where: {level: {_eq: "Easy"}}) {
+    id
+    quizName
+    level
+    questions {
+      question
+      points
+      negativePoints
+      image
+      options {
+        value
+        isRight
+      }
+    }
+  }
+}
+`;
+
+export const levelMedium = `query MyQuery {
+  Quiz(where: {level: {_eq: "Medium"}}) {
+    id
+    quizName
+    level
+    questions {
+      question
+      points
+      negativePoints
+      image
+      options {
+        value
+        isRight
+      }
+    }
+  }
+}
+`;
+
+export const levelHard = `query MyQuery {
+  Quiz(where: {level: {_eq: "Hard"}}) {
+    id
+    quizName
+    level
+    questions {
+      question
+      points
+      negativePoints
+      image
+      options {
+        value
+        isRight
+      }
+    }
+  }
+}
+`;

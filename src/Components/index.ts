@@ -1,8 +1,8 @@
 export { Home } from "./Home";
-export { Modal } from "./Modal";
+export { RestartModal } from "./RestartModal";
 export { Navigation } from "./Navigation";
 export { Profile } from "./Profile";
-export { QuizData } from "./QuizData";
+export { QuizPage } from "./QuizPage";
 export { Result } from "./Result";
 export { Rules } from "./Rules";
 export { ScoreBoard } from "./ScoreBoard";

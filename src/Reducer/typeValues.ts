@@ -6,4 +6,4 @@ export const CLEAR_STATS = "CLEAR_STATS";
 export const SET_QUIZ = "SET_QUIZ";
 export const UPDATE_ATTEMPT = "UPDATE_ATTEMPT";
 export const UPDATE_HIGHSCORE = "UPDATE_HIGHSCORE";
-export const UNLOCK_QUIZ = "UNLOCK_QUIZ";
+export const INITIALIZE_STATS = "INITIALIZE_STATS";

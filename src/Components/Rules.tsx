@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizzes } from "../data/getQuiz";
 
 export const Rules = () => {
   const navigate = useNavigate();
   const {
     quizState: { quizName },
+    quizData:quizzes
   } = useQuizContext();
   const quizDetail = quizzes.find((quiz) => quiz.quizName === quizName);
 

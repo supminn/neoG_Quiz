@@ -1,3 +1,4 @@
+import { Quiz } from "../Context/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,
@@ -7,6 +8,7 @@ import {
   UPDATE_HIGHSCORE,
   NEXT_QUESTION,
   CLEAR_STATS,
+  INITIALIZE_STATS,
 } from "./typeValues";
 
 export type Action =
@@ -37,7 +39,12 @@ export type Action =
       };
     }
   | {
+      type: typeof INITIALIZE_STATS;
+      payload: { quizzes: Array<Quiz> };
+    }
+  | {
       type: typeof CLEAR_STATS;
+      payload: { quizzes: Array<Quiz> };
     }
   | {
       type: typeof NEXT_QUESTION;

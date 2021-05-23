@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTimer } from "react-timer-hook";
 import { useQuizContext } from "../Context/QuizProvider";
-import { quizzes } from "../data/getQuiz";
-import { Options, Quiz } from "../data/Quiz.type";
+import { Options } from "../Context/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,
@@ -17,16 +16,17 @@ import {
   optionWrong,
 } from "../Styles/Style";
 import { createTimer } from "../Utils/timer";
-import { Modal } from "./Modal";
+import { RestartModal } from "./RestartModal";
 import { Result } from "./Result";
 
-export const QuizData = () => {
+export const QuizPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
 
   const {
     quizState: { questionNo, quizName },
     quizDispatch,
+    quizData: quizzes
   } = useQuizContext();
 
   const selectedQuiz = quizzes.find(
@@ -108,7 +108,7 @@ export const QuizData = () => {
               src={selectedQuiz.questions[questionNo].image}
               alt="jump rope quiz"
             />
-            <div className="flex-grow w-1/2">
+            <div className="w-10/12 m-auto md:w-5/6 lg:flex-grow lg:w-1/2">
               <h3 className="p-2 italic font-medium text-xl">
                 {selectedQuiz.questions[questionNo].question}
               </h3>
@@ -150,7 +150,7 @@ export const QuizData = () => {
       )}
 
       {showModal && (
-        <Modal
+        <RestartModal
           setShowModal={setShowModal}
           restart={restart}
           setShowAnswer={setShowAnswer}

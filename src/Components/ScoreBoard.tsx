@@ -7,6 +7,7 @@ export const ScoreBoard = () => {
   const {
     quizState: { stats },
     quizDispatch,
+    quizData: quizzes
   } = useQuizContext();
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export const ScoreBoard = () => {
       </table>
       <button
         className={secondaryBtn}
-        onClick={() => quizDispatch({ type: CLEAR_STATS })}
+        onClick={() => quizDispatch({ type: CLEAR_STATS, payload:{quizzes} })}
       >
         <i className="fas fa-eraser fa-lg"></i> Clear Stats
       </button>

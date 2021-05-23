@@ -1,10 +1,10 @@
-import { quizzes } from "../data/getQuiz";
 import { Action } from "./Action.type";
 import { State } from "./State.type";
 import {
   CLEAR_STATS,
   DECREMENT,
   INCREMENT,
+  INITIALIZE_STATS,
   NEXT_QUESTION,
   RESET,
   SET_QUIZ,
@@ -12,17 +12,12 @@ import {
   UPDATE_HIGHSCORE,
 } from "./typeValues";
 
-const initialStats = quizzes.map((quiz) => ({
-  name: quiz.quizName,
-  highScore: 0,
-  attempt: 0,
-}));
 
 export const initialState: State = {
   score: 0,
   questionNo: 0,
   quizName: "",
-  stats: JSON.parse(localStorage.getItem("Stats")!) || initialStats,
+  stats: JSON.parse(localStorage.getItem("Stats")!) || [],
 };
 
 export const quizReducer = (state: State, action: Action) => {
@@ -34,7 +29,17 @@ export const quizReducer = (state: State, action: Action) => {
         score: 0,
         questionNo: 0,
       };
-
+    case INITIALIZE_STATS:
+      const initialStats =  action.payload.quizzes.map((quiz) => ({
+        name: quiz.quizName,
+        highScore: 0,
+        attempt: 0,
+      }))
+      localStorage.setItem("Stats", JSON.stringify(initialStats));
+      return {
+        ...state,
+        stats: initialStats
+      }
     case INCREMENT:
       return {
         ...state,
@@ -93,7 +98,11 @@ export const quizReducer = (state: State, action: Action) => {
       localStorage.removeItem("Stats");
       return {
         ...state,
-        stats: initialStats,
+        stats: action.payload.quizzes.map((quiz) => ({
+          name: quiz.quizName,
+          highScore: 0,
+          attempt: 0,
+        }))
       };
 
     default:

@@ -17,4 +17,3 @@ export type Quiz = {
   questions: Questions[];
 };
 
-export type Quizzes = Array<Quiz>;

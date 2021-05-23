@@ -11,7 +11,7 @@ type ModalType = {
   ) => void;
 };
 
-export const Modal = ({ setShowModal, restart, setShowAnswer }: ModalType) => {
+export const RestartModal = ({ setShowModal, restart, setShowAnswer }: ModalType) => {
   const { quizDispatch } = useQuizContext();
 
   return (

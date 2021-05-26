@@ -1,5 +1,5 @@
 ## Future Enhancements
-* Quiz unlocks by scoring a threshold in the previous quiz.
+* Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)
 * Stats for an individual user.
 * Challenge friends to take up the quiz.
 * Show points break-up.

@@ -7,3 +7,9 @@ export const SET_QUIZ = "SET_QUIZ";
 export const UPDATE_ATTEMPT = "UPDATE_ATTEMPT";
 export const UPDATE_HIGHSCORE = "UPDATE_HIGHSCORE";
 export const INITIALIZE_STATS = "INITIALIZE_STATS";
+
+export const SET_NAME = "SET_NAME";
+export const SET_USERNAME = "SET_USERNAME";
+export const SET_EMAIL = "SET_EMAIL";
+export const SET_PASSWORD = "SET_PASSWORD";
+export const CLEAR_TEXT_FIELDS = "CLEAR_TEXT_FIELDS";

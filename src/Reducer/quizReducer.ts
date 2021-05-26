@@ -1,5 +1,5 @@
-import { Action } from "./Action.type";
-import { State } from "./State.type";
+import { QuizAction } from "./Action.type";
+import { QuizState } from "./State.type";
 import {
   CLEAR_STATS,
   DECREMENT,
@@ -13,14 +13,14 @@ import {
 } from "./typeValues";
 
 
-export const initialState: State = {
+export const initialState: QuizState = {
   score: 0,
   questionNo: 0,
   quizName: "",
   stats: JSON.parse(localStorage.getItem("Stats")!) || [],
 };
 
-export const quizReducer = (state: State, action: Action) => {
+export const quizReducer = (state: QuizState, action: QuizAction) => {
   switch (action.type) {
     case SET_QUIZ:
       return {

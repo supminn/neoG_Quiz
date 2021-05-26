@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QuizProvider } from "./Context/QuizProvider";
+import { AuthenticationProvider } from "./Context/AuthenticationProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <AuthenticationProvider>
       <QuizProvider>
       <App />
       </QuizProvider>
+      </AuthenticationProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

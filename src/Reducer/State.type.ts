@@ -1,4 +1,4 @@
-export type State = {
+export type QuizState = {
   score: number;
   questionNo: number;
   quizName: string;
@@ -10,3 +10,10 @@ export type Stats = {
   highScore: number;
   attempt: number;
 };
+
+export type UserState = {
+  username:string;
+  password:string;
+  email:string;
+  name: string;
+}

@@ -1,7 +1,9 @@
+import { Quiz } from "../Context/Quiz.type";
+
 export type QuizState = {
   score: number;
   questionNo: number;
-  quizName: string;
+  currentQuiz: Quiz;
   stats: Array<Stats>;
 };
 

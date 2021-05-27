@@ -1,3 +1,4 @@
+import { Quiz } from "../Context/Quiz.type";
 import { QuizAction } from "./Action.type";
 import { QuizState } from "./State.type";
 import {
@@ -16,7 +17,7 @@ import {
 export const initialState: QuizState = {
   score: 0,
   questionNo: 0,
-  quizName: "",
+  currentQuiz: {} as Quiz,
   stats: JSON.parse(localStorage.getItem("Stats")!) || [],
 };
 
@@ -25,7 +26,7 @@ export const quizReducer = (state: QuizState, action: QuizAction) => {
     case SET_QUIZ:
       return {
         ...state,
-        quizName: action.payload,
+        currentQuiz: action.payload,
         score: 0,
         questionNo: 0,
       };

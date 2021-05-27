@@ -12,6 +12,7 @@ export type Questions = {
 };
 
 export type Quiz = {
+  id: string;
   quizName: string;
   level: string;
   questions: Questions[];

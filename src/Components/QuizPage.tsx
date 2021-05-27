@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useTimer } from "react-timer-hook";
 import { useQuizContext } from "../Context/QuizProvider";
 import { Options } from "../Context/Quiz.type";
@@ -7,6 +7,7 @@ import {
   DECREMENT,
   INCREMENT,
   NEXT_QUESTION,
+  SET_QUIZ,
   UPDATE_ATTEMPT,
 } from "../Reducer/typeValues";
 import {
@@ -18,40 +19,48 @@ import {
 import { createTimer } from "../Utils/timer";
 import { RestartModal } from "./RestartModal";
 import { Result } from "./Result";
+import { useAuthentication } from "../Context/AuthenticationProvider";
 
 export const QuizPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
-
   const {
-    quizState: { questionNo, quizName },
+    quizData: quizzes,
+    quizState: { questionNo, currentQuiz },
     quizDispatch,
-    quizData: quizzes
   } = useQuizContext();
+  const { setShowLoader } = useAuthentication();
 
-  const selectedQuiz = quizzes.find(
-    (quiz) => quiz.quizName === quizName
-  )!;
-
-  const totalQuestions = selectedQuiz.questions.length;
+  const { quizId } = useParams();
 
   const { seconds, minutes, start, restart, pause } = useTimer({
     expiryTimestamp: createTimer(),
     onExpire: () => updateAnswer({ isRight: false, value: "timer expired" }),
   });
 
+  const totalQuestions = currentQuiz.questions.length;
+
   useEffect(() => {
-    document.title = `SupQuiz | ${selectedQuiz.level}`
-    start();
+    setShowLoader(true);
+    quizDispatch({
+      type: SET_QUIZ,
+      payload: quizzes.find((quiz) => quiz.id === quizId)!,
+    });
+    setShowLoader(false);
   }, []);
 
   useEffect(() => {
-    if (questionNo + 1 === 1) {
-      quizDispatch({ type: UPDATE_ATTEMPT, payload: { quizName, attempt: 1 } });
-    }
-  }, [questionNo]);
+    document.title = `SupQuiz | ${currentQuiz.level}`;
+    start();
+  }, [quizzes]);
 
   useEffect(() => {
+    if (questionNo + 1 === 1) {
+      quizDispatch({
+        type: UPDATE_ATTEMPT,
+        payload: { quizName: currentQuiz.quizName, attempt: 1 },
+      });
+    }
     if (questionNo + 1 > totalQuestions) {
       pause();
     }
@@ -61,12 +70,12 @@ export const QuizPage = () => {
     if (option.isRight) {
       quizDispatch({
         type: INCREMENT,
-        payload: selectedQuiz.questions[questionNo].points,
+        payload: currentQuiz.questions[questionNo].points,
       });
     } else {
       quizDispatch({
         type: DECREMENT,
-        payload: selectedQuiz.questions[questionNo].negativePoints,
+        payload: currentQuiz.questions[questionNo].negativePoints,
       });
     }
     setShowAnswer(true);
@@ -78,7 +87,6 @@ export const QuizPage = () => {
     quizDispatch({ type: NEXT_QUESTION });
     restart(createTimer());
   };
-
   return (
     <>
       {questionNo + 1 > totalQuestions && <Result />}
@@ -105,14 +113,14 @@ export const QuizPage = () => {
           <section className="lg:flex lg:justify-center lg:items-start lg:p-4">
             <img
               className="w-full m-auto h-auto md:w-3/4 lg:w-1/3  flex-grow"
-              src={selectedQuiz.questions[questionNo].image}
+              src={currentQuiz.questions[questionNo].image}
               alt="jump rope quiz"
             />
             <div className="w-10/12 m-auto md:w-5/6 lg:flex-grow lg:w-1/2">
               <h3 className="p-2 italic font-medium text-xl">
-                {selectedQuiz.questions[questionNo].question}
+                {currentQuiz.questions[questionNo].question}
               </h3>
-              {selectedQuiz.questions[questionNo].options.map((option) => (
+              {currentQuiz.questions[questionNo].options.map((option) => (
                 <button
                   disabled={showAnswer}
                   className={

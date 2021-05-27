@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const Result = () => {
   const {
-    quizState: { score, quizName },
+    quizState: { score, currentQuiz },
     quizDispatch,
   } = useQuizContext();
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const Result = () => {
   }, []);
 
   useEffect(() => {
-    quizDispatch({ type: UPDATE_HIGHSCORE, payload: { quizName, score } });
+    quizDispatch({ type: UPDATE_HIGHSCORE, payload: { quizName: currentQuiz.quizName, score } });
   }, []);
 
   return (

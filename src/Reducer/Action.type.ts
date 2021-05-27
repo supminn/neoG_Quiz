@@ -19,7 +19,7 @@ import {
 export type QuizAction =
   | {
       type: typeof SET_QUIZ;
-      payload: string;
+      payload:  Quiz;
     }
   | {
       type: typeof INCREMENT;

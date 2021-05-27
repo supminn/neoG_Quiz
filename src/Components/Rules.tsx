@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useQuizContext } from "../Context/QuizProvider";
 
 export const Rules = () => {
   const navigate = useNavigate();
+  const {quizId} = useParams();
   const {
-    quizState: { quizName },
     quizData:quizzes
   } = useQuizContext();
-  const quizDetail = quizzes.find((quiz) => quiz.quizName === quizName);
+  const quizDetail = quizzes.find((quiz) => quiz.id === quizId);
 
   useEffect(() => {
     document.title = "SupQuiz | Rules"
@@ -58,7 +58,7 @@ export const Rules = () => {
         <div>
           <button
             className="uppercase font-semibold tracking-wide bg-blue-100 text-blue-700 px-4 py-2 rounded-lg mt-2 focus:outline-none hover:bg-blue-200"
-            onClick={() => navigate("/quiz")}
+            onClick={() => navigate(`/quiz/${quizId}`)}
           >
             Start Quiz
           </button>

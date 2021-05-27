@@ -1,4 +1,4 @@
-export const allQuizes = `query MyQuery {
+export const allQuizzes = `query MyQuery {
     Quiz {
       id
       quizName

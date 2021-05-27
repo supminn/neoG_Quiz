@@ -18,7 +18,7 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    if(!JSON.parse(localStorage.getItem("Stats")!)){
+    if (!JSON.parse(localStorage.getItem("Stats")!)) {
       quizDispatch({ type: INITIALIZE_STATS, payload: { quizzes } });
     }
   }, []);
@@ -59,8 +59,11 @@ export const Home = () => {
           className="border-2 border-blue-200 hover:shadow-2xl hover:border-blue-900 m-2 rounded-lg"
           key={quiz.quizName}
           onClick={() => {
-            quizDispatch({ type: SET_QUIZ, payload: quiz.quizName });
-            navigate("/rules");
+            quizDispatch({
+              type: SET_QUIZ,
+              payload: quiz,
+            });
+            navigate(`/rules/${quiz.id}`);
           }}
         >
           <img

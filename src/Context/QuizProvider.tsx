@@ -10,8 +10,8 @@ import { Quiz } from "./Quiz.type";
 import { initialState, quizReducer } from "../Reducer/quizReducer";
 import { QuizContextValue } from "./Context.type";
 import Loader from "react-loader-spinner";
-import { allQuizes } from "./serverQueries";
 import { useAuthentication } from "./AuthenticationProvider";
+import { allQuizzes } from "./serverQueries";
 
 const QuizContext = createContext<QuizContextValue>({} as QuizContextValue);
 
@@ -33,7 +33,7 @@ export const QuizProvider: React.FC = ({ children }) => {
           method: "post",
           url: "https://supminn-quiz.hasura.app/v1/graphql",
           data: JSON.stringify({
-            query: allQuizes,
+            query: allQuizzes,
           }),
           headers: {
             "Content-Type": "application/json",

@@ -1,10 +1,10 @@
 ## Future Enhancements
+* Fix data on refresh
 * Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)
-* Stats for an individual user.
 * Challenge friends to take up the quiz.
 * Show points break-up.
 * Paging for quiz data. Load the quiz just before it starts.
-
+* Scoreboard with username/anonymous. Clears stats only when the user is logged in.
 
 # Getting Started with Create React App
 

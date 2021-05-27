@@ -6,6 +6,7 @@ import Party from "../Assets/Party.png";
 import Sad from "../Assets/Sad.svg";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { useAuthentication } from "../Context/AuthenticationProvider";
 
 export const Result = () => {
   const {
@@ -13,14 +14,20 @@ export const Result = () => {
     quizDispatch,
   } = useQuizContext();
   const navigate = useNavigate();
+  const { login } = useAuthentication();
 
   useEffect(() => {
-    document.title = "SupQuiz | Results"
+    document.title = "SupQuiz | Results";
   }, []);
 
   useEffect(() => {
-    quizDispatch({ type: UPDATE_HIGHSCORE, payload: { quizName: currentQuiz.quizName, score } });
-  }, []);
+    if (login) {
+      quizDispatch({
+        type: UPDATE_HIGHSCORE,
+        payload: { quizName: currentQuiz.quizName, score },
+      });
+    }
+  }, [login]);
 
   return (
     <div className="lg:flex lg:justify-center lg:items-center">
@@ -33,20 +40,24 @@ export const Result = () => {
         <h3 className="text-2xl">
           Your final score: <b>{score}</b>
         </h3>
-        <button
-          className={secondaryBtn}
-          onClick={() => quizDispatch({ type: RESET })}
-        >
-          Replay this Quiz
-        </button>
+        {currentQuiz.questions.length > 0 && (
+          <button
+            className={secondaryBtn}
+            onClick={() => quizDispatch({ type: RESET })}
+          >
+            Replay this Quiz
+          </button>
+        )}
         <button className={primaryBtn} onClick={() => navigate("/")}>
-          Play other Quizzes
+          {currentQuiz.questions.length > 0
+            ? "Play other Quizzes"
+            : "View Quizzes"}
         </button>
         <Link to="/score-board">
-        <button className={secondaryBtn}>
-          <i className="fas fa-info-circle"></i> View My Statistics
-        </button>
-      </Link>
+          <button className={secondaryBtn}>
+            <i className="fas fa-info-circle"></i> View My Statistics
+          </button>
+        </Link>
       </div>
     </div>
   );

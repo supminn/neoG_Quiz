@@ -22,6 +22,12 @@ export const UserProfile = () => {
           >
             Home
           </Link>
+          <Link
+            to="/score-board"
+            className={secondaryBtn}
+          >
+            Scores and Statistics
+          </Link>
         </div>
         <button className={primaryBtn} onClick={logOutUser}>
           Logout

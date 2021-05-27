@@ -5,7 +5,6 @@ import { QuizState, UserState } from "../Reducer/State.type";
 export type QuizContextValue = {
   quizState: QuizState;
   quizDispatch: (args: QuizAction) => void;
-  quizData: Array<Quiz>;
 };
 
 export type UserData = {

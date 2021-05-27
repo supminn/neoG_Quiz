@@ -1,22 +1,29 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import { useAuthentication } from "../Context/AuthenticationProvider";
 import { useQuizContext } from "../Context/QuizProvider";
+import { fetchQuizData } from "../serverRequest/requests";
+
 
 export const Rules = () => {
   const navigate = useNavigate();
   const {quizId} = useParams();
-  const {
-    quizData:quizzes
-  } = useQuizContext();
-  const quizDetail = quizzes.find((quiz) => quiz.id === quizId);
-
+  const { quizState:{currentQuiz}, quizDispatch } = useQuizContext();
+  const {setShowLoader} = useAuthentication();
   useEffect(() => {
     document.title = "SupQuiz | Rules"
   }, []);
 
+  // useEffect(() => {
+  //   (async() => {
+  //     await fetchQuizData(quizDispatch, quizId, setShowLoader);
+  //   })();
+  //   console.log("Rending within rules");
+  // },[]);
+
   return (
-    <section className="flex items-center justify-center px-4 ">
-      <div className="mt-16 w-full rounded-lg shadow-lg p-4 bg-white md:w-3/4 lg:w-6/12">
+    <section className="flex items-center justify-center px-4 pb-12">
+      <div className="mt-12 w-full rounded-lg shadow-lg p-4 bg-white md:w-3/4 lg:w-6/12">
         <h3 className="font-semibold text-lg text-blue-800 tracking-wide mb-2">
           Instructions
         </h3>
@@ -24,12 +31,12 @@ export const Rules = () => {
           <li className="py-2">
             {" "}
             <i className="fab fa-gg-circle fa-lg"></i> This quiz is of level:{" "}
-            <em className="font-semibold">{quizDetail?.level}</em>
+            <em className="font-semibold">{currentQuiz?.level}</em>
           </li>
 
           <li className="py-2">
             <i className="fab fa-gg-circle fa-lg"></i> There are a total of{" "}
-            <b>{quizDetail?.questions.length}</b> questions
+            <b>{currentQuiz?.questions.length}</b> questions
           </li>
 
           <li className="py-2">
@@ -48,7 +55,7 @@ export const Rules = () => {
             level
           </li>
 
-          {quizDetail?.level !== "Easy" && (
+          {currentQuiz?.level !== "Easy" && (
             <li className="py-2">
               <i className="fab fa-gg-circle fa-lg"></i> Every wrong answer has
               a negative marking of <b>5</b> points

@@ -1,6 +1,7 @@
-import { Quiz } from "../Context/Quiz.type";
+import { Quiz, Quizzes } from "../Context/Quiz.type";
 
 export type QuizState = {
+  quizzes: Quizzes;
   score: number;
   questionNo: number;
   currentQuiz: Quiz;

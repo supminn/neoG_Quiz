@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTimer } from "react-timer-hook";
 import { useQuizContext } from "../Context/QuizProvider";
 import { Options } from "../Context/Quiz.type";
@@ -7,7 +7,6 @@ import {
   DECREMENT,
   INCREMENT,
   NEXT_QUESTION,
-  SET_QUIZ,
   UPDATE_ATTEMPT,
 } from "../Reducer/typeValues";
 import {
@@ -25,13 +24,10 @@ export const QuizPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const {
-    quizData: quizzes,
     quizState: { questionNo, currentQuiz },
     quizDispatch,
   } = useQuizContext();
-  const { setShowLoader } = useAuthentication();
-
-  const { quizId } = useParams();
+  const { login } = useAuthentication();
 
   const { seconds, minutes, start, restart, pause } = useTimer({
     expiryTimestamp: createTimer(),
@@ -40,22 +36,19 @@ export const QuizPage = () => {
 
   const totalQuestions = currentQuiz.questions.length;
 
-  useEffect(() => {
-    setShowLoader(true);
-    quizDispatch({
-      type: SET_QUIZ,
-      payload: quizzes.find((quiz) => quiz.id === quizId)!,
-    });
-    setShowLoader(false);
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     await fetchQuizData(quizDispatch, quizId, setShowLoader);
+  //   })();
+  // }, []);
 
   useEffect(() => {
     document.title = `SupQuiz | ${currentQuiz.level}`;
     start();
-  }, [quizzes]);
+  }, [currentQuiz]);
 
   useEffect(() => {
-    if (questionNo + 1 === 1) {
+    if (questionNo + 1 === 1 && login) {
       quizDispatch({
         type: UPDATE_ATTEMPT,
         payload: { quizName: currentQuiz.quizName, attempt: 1 },
@@ -64,7 +57,7 @@ export const QuizPage = () => {
     if (questionNo + 1 > totalQuestions) {
       pause();
     }
-  }, [questionNo]);
+  }, [questionNo, login]);
 
   const updateAnswer = (option: Options) => {
     if (option.isRight) {

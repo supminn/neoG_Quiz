@@ -1,9 +1,10 @@
-import { Quiz } from "../Context/Quiz.type";
+import { Quiz, Quizzes } from "../Context/Quiz.type";
 import {
   DECREMENT,
   INCREMENT,
   RESET,
-  SET_QUIZ,
+  SET_QUIZZES,
+  SET_CURRENT_QUIZ,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
   NEXT_QUESTION,
@@ -18,7 +19,11 @@ import {
 
 export type QuizAction =
   | {
-      type: typeof SET_QUIZ;
+      type: typeof SET_QUIZZES;
+      payload:  Quizzes;
+    }
+    | {
+      type: typeof SET_CURRENT_QUIZ;
       payload:  Quiz;
     }
   | {
@@ -45,11 +50,11 @@ export type QuizAction =
     }
   | {
       type: typeof INITIALIZE_STATS;
-      payload: { quizzes: Array<Quiz> };
+      payload: { quizzes: Quizzes };
     }
   | {
       type: typeof CLEAR_STATS;
-      payload: { quizzes: Array<Quiz> };
+      payload: { quizzes: Quizzes };
     }
   | {
       type: typeof NEXT_QUESTION;

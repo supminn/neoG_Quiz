@@ -1,27 +1,35 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { INITIALIZE_STATS, SET_QUIZ } from "../Reducer/typeValues";
+import { INITIALIZE_STATS, SET_CURRENT_QUIZ } from "../Reducer/typeValues";
 import { header1, secondaryBtn } from "../Styles/Style";
 import Hero from "../Assets/home.svg";
 import Pic1 from "../Assets/Basic.png";
 import Pic2 from "../Assets/JRD.png";
 import Pic3 from "../Assets/Trick.png";
 import { useEffect } from "react";
+import { useAuthentication } from "../Context/AuthenticationProvider";
+import { fetchQuizData } from "../serverRequest/requests";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const { quizDispatch, quizData: quizzes } = useQuizContext();
+  const { quizDispatch, quizState: {quizzes} } = useQuizContext();
+  const {login, setShowLoader} = useAuthentication();
 
   useEffect(() => {
     document.title = "SupQuiz | Home";
   }, []);
 
   useEffect(() => {
-    if (!JSON.parse(localStorage.getItem("Stats")!)) {
+    if (!JSON.parse(localStorage.getItem("Stats")!) && login) {
       quizDispatch({ type: INITIALIZE_STATS, payload: { quizzes } });
     }
-  }, []);
+  }, [login]);
+
+  const setCurrentQuiz = async (id: string) => {
+    await fetchQuizData(quizDispatch, id, setShowLoader);
+    navigate(`/rules/${id}`);
+  }
 
   return (
     <>
@@ -58,13 +66,7 @@ export const Home = () => {
         <button
           className="border-2 border-blue-200 hover:shadow-2xl hover:border-blue-900 m-2 rounded-lg"
           key={quiz.quizName}
-          onClick={() => {
-            quizDispatch({
-              type: SET_QUIZ,
-              payload: quiz,
-            });
-            navigate(`/rules/${quiz.id}`);
-          }}
+          onClick={() => setCurrentQuiz(quiz.id)}
         >
           <img
             className="w-60 rounded-lg"

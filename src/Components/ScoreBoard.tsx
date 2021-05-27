@@ -5,9 +5,8 @@ import { secondaryBtn } from "../Styles/Style";
 
 export const ScoreBoard = () => {
   const {
-    quizState: { stats },
+    quizState: { stats, quizzes },
     quizDispatch,
-    quizData: quizzes
   } = useQuizContext();
 
   useEffect(() => {

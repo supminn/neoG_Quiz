@@ -1,52 +1,21 @@
-import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { Quiz } from "./Quiz.type";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { initialState, quizReducer } from "../Reducer/quizReducer";
 import { QuizContextValue } from "./Context.type";
 import Loader from "react-loader-spinner";
 import { useAuthentication } from "./AuthenticationProvider";
-import { allQuizzes } from "./serverQueries";
+import { fetchQuizzes } from "../serverRequest/requests";
 
 const QuizContext = createContext<QuizContextValue>({} as QuizContextValue);
 
 export const useQuizContext = () => useContext(QuizContext);
 
 export const QuizProvider: React.FC = ({ children }) => {
-  const [quizData, setQuizData] = useState([] as Array<Quiz>);
   const [quizState, quizDispatch] = useReducer(quizReducer, initialState);
   const { showLoader, setShowLoader } = useAuthentication();
+
   useEffect(() => {
     (async () => {
-      try {
-        setShowLoader(true);
-        const {
-          data: {
-            data: { Quiz },
-          },
-        } = await axios({
-          method: "post",
-          url: "https://supminn-quiz.hasura.app/v1/graphql",
-          data: JSON.stringify({
-            query: allQuizzes,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            "x-hasura-admin-secret": process.env.REACT_APP_ADMIN_KEY,
-          },
-        });
-        const QuizData: Array<Quiz> = Quiz;
-        setQuizData(QuizData);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setShowLoader(false);
-      }
+      await fetchQuizzes(quizDispatch, setShowLoader);
     })();
   }, []);
 
@@ -58,7 +27,7 @@ export const QuizProvider: React.FC = ({ children }) => {
       </h2>
     </div>
   ) : (
-    <QuizContext.Provider value={{ quizState, quizDispatch, quizData }}>
+    <QuizContext.Provider value={{ quizState, quizDispatch }}>
       {children}
     </QuizContext.Provider>
   );

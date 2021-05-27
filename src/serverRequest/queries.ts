@@ -1,3 +1,31 @@
+export const quizzesQuery = `query MyQuery {
+  Quiz {
+    id
+    level
+    quizName
+  }
+}
+`;
+
+export const individualQuizQuery = (id:string)  =>  `query MyQuery {
+  Quiz(where: {id: {_eq: "${id}"}}) {
+    id
+    level
+    quizName
+    questions {
+      question
+      points
+      negativePoints
+      image
+      options {
+        value
+        isRight
+      }
+    }
+  }
+}
+`
+
 export const allQuizzes = `query MyQuery {
     Quiz {
       id

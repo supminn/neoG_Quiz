@@ -18,3 +18,8 @@ export type Quiz = {
   questions: Questions[];
 };
 
+export type Quizzes = Array<{
+  id: string;
+  quizName: string;
+  level: string;
+}>;

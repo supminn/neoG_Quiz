@@ -1,4 +1,4 @@
-import { Quiz } from "../Context/Quiz.type";
+import { Quiz, Quizzes } from "../Context/Quiz.type";
 import { QuizAction } from "./Action.type";
 import { QuizState } from "./State.type";
 import {
@@ -8,39 +8,43 @@ import {
   INITIALIZE_STATS,
   NEXT_QUESTION,
   RESET,
-  SET_QUIZ,
+  SET_CURRENT_QUIZ,
+  SET_QUIZZES,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
 } from "./typeValues";
 
-
 export const initialState: QuizState = {
+  quizzes: [] as Quizzes,
   score: 0,
   questionNo: 0,
-  currentQuiz: {} as Quiz,
+  currentQuiz: {quizName:"", questions:[], id:"", level:""} as Quiz,
   stats: JSON.parse(localStorage.getItem("Stats")!) || [],
 };
 
 export const quizReducer = (state: QuizState, action: QuizAction) => {
   switch (action.type) {
-    case SET_QUIZ:
+    case SET_QUIZZES:
+      return {
+        ...state,
+        quizzes: action.payload,
+      };
+    case SET_CURRENT_QUIZ:
       return {
         ...state,
         currentQuiz: action.payload,
-        score: 0,
-        questionNo: 0,
       };
     case INITIALIZE_STATS:
-      const initialStats =  action.payload.quizzes.map((quiz) => ({
+      const initialStats = action.payload.quizzes.map((quiz) => ({
         name: quiz.quizName,
         highScore: 0,
         attempt: 0,
-      }))
+      }));
       localStorage.setItem("Stats", JSON.stringify(initialStats));
       return {
         ...state,
-        stats: initialStats
-      }
+        stats: initialStats,
+      };
     case INCREMENT:
       return {
         ...state,
@@ -103,7 +107,7 @@ export const quizReducer = (state: QuizState, action: QuizAction) => {
           name: quiz.quizName,
           highScore: 0,
           attempt: 0,
-        }))
+        })),
       };
 
     default:

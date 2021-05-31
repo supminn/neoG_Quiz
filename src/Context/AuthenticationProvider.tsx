@@ -4,7 +4,8 @@ import { useNavigate } from "react-router";
 import { UserState } from "../Reducer/State.type";
 import { CLEAR_TEXT_FIELDS } from "../Reducer/typeValues";
 import { userEntryReducer } from "../Reducer/userEntryReducer";
-import { AuthenticationContextValue, UserData } from "./Context.type";
+import { AuthenticationContextValue, LoginData } from "./Context.type";
+import jwt_decode from "jwt-decode";
 
 const AuthenticationContext = createContext({} as AuthenticationContextValue);
 
@@ -17,9 +18,10 @@ export const initialUserState: UserState = {
   name: "",
 };
 
+
+
 export const AuthenticationProvider: React.FC = ({ children }) => {
-  const [userData, setUserData] = useState<UserData>(null);
-  const [login, setLogin] = useState<boolean>(false);
+  const [login, setLogin] = useState<LoginData>(null);
   const [showLoader, setShowLoader] = useState(false);
   const [userEntryState, userEntryDispatch] = useReducer(
     userEntryReducer,
@@ -37,29 +39,23 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           password: pwd,
         }
       );
-      setLogin(true);
-      localStorage.setItem("login", "true");
-      setUserData(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      const decodedValue: { token: string; name: string; iat: number } =
+        jwt_decode(data.token);
+      const loginData = { token: data.token, user: decodedValue.name };
+      setLogin(loginData);
       userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
       navigate("/");
     } catch (err) {
       console.error(err.response.data);
       alert(err.response.data.message);
-    }
-    finally{
+    } finally {
       setShowLoader(false);
     }
   };
 
   const logOutUser = () => {
-    setShowLoader(true);
-    setLogin(false);
-    setUserData(null);
-    localStorage.removeItem("login");
-    localStorage.removeItem("userData");
-    setShowLoader(false);
-    navigate("/");
+    setLogin(null);
+    localStorage.clear();
   };
 
   const registerUser = async (
@@ -79,17 +75,13 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           email: email.toLowerCase(),
         }
       );
-      setLogin(true);
-      localStorage.setItem("login", "true");
-      setUserData(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      alert(`Thank you ${name} for signing up with us! \nLogin to continue 🙂`);
       userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
-      navigate("/profile");
+      navigate("/");
     } catch (err) {
       console.error(err.response.data);
       alert(err.response.data.message);
-    }
-    finally{
+    } finally {
       setShowLoader(false);
     }
   };
@@ -97,7 +89,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   return (
     <AuthenticationContext.Provider
       value={{
-        userData,
         login,
         userEntryState,
         userEntryDispatch,
@@ -105,7 +96,7 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
         logOutUser,
         registerUser,
         showLoader,
-        setShowLoader
+        setShowLoader,
       }}
     >
       {children}

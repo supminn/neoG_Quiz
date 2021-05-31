@@ -1,15 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { useAuthentication } from "../Context/AuthenticationProvider";
 import { useQuizContext } from "../Context/QuizProvider";
-import { fetchQuizData } from "../serverRequest/requests";
 
 
 export const Rules = () => {
   const navigate = useNavigate();
   const {quizId} = useParams();
-  const { quizState:{currentQuiz}, quizDispatch } = useQuizContext();
-  const {setShowLoader} = useAuthentication();
+  const { quizState:{currentQuiz} } = useQuizContext();
   useEffect(() => {
     document.title = "SupQuiz | Rules"
   }, []);

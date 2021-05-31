@@ -3,7 +3,7 @@ import { useAuthentication } from "../Context/AuthenticationProvider";
 import { primaryBtn, secondaryBtn } from "../Styles/Style";
 
 export const UserProfile = () => {
-  const { logOutUser, userData } = useAuthentication();
+  const { logOutUser, login } = useAuthentication();
 
   return (
     <>
@@ -13,7 +13,7 @@ export const UserProfile = () => {
       <div className="div-container">
         <i className="fas fa-5x fa-user-circle primaryBg-txt"></i>
         <h3 className="text-xl font-medium">
-          Welcome <span className="font-bold">{userData!.name}</span>
+          Welcome <span className="font-bold">{login!.user}</span>
         </h3>
         <div className="user-nav-container">
           <Link

@@ -1,4 +1,3 @@
-import { Quiz } from "./Quiz.type";
 import { QuizAction, UserEntryAction } from "../Reducer/Action.type";
 import { QuizState, UserState } from "../Reducer/State.type";
 
@@ -7,14 +6,14 @@ export type QuizContextValue = {
   quizDispatch: (args: QuizAction) => void;
 };
 
-export type UserData = {
-  name: string;
-  _id: string;
+export type LoginData = {
+  token: string;
+  user: string;
 } | null;
 
+
 export type AuthenticationContextValue = {
-  userData: UserData;
-  login: boolean;
+  login: LoginData;
   userEntryState: UserState;
   userEntryDispatch: (args: UserEntryAction) => void;
   loginUser: (name: string, pwd: string) => void;
@@ -26,5 +25,5 @@ export type AuthenticationContextValue = {
     email: string
   ) => void;
   showLoader: boolean;
-  setShowLoader: (loader:boolean) => void;
+  setShowLoader: (loader: boolean) => void;
 };

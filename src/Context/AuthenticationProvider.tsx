@@ -75,9 +75,11 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           email: email.toLowerCase(),
         }
       );
-      alert(`Thank you ${name} for signing up with us! \nLogin to continue 🙂`);
-      userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
-      navigate("/");
+      if(data.success){
+        alert(`Thank you ${name} for signing up with us! \nLogin to continue 🙂`);
+        userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
+        navigate("/");
+      }
     } catch (err) {
       console.error(err.response.data);
       alert(err.response.data.message);

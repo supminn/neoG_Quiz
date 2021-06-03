@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/github/supminn/neoG_Quiz.svg)](https://wakatime.com/badge/github/supminn/neoG_Quiz)
 ## Future Enhancements
 * Fix data on refresh
 * Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)

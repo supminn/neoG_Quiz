@@ -18,10 +18,10 @@ export const initialUserState: UserState = {
   name: "",
 };
 
-
+const initialLoginState = JSON.parse(localStorage.getItem("login")!) || null;
 
 export const AuthenticationProvider: React.FC = ({ children }) => {
-  const [login, setLogin] = useState<LoginData>(null);
+  const [login, setLogin] = useState<LoginData>(initialLoginState);
   const [showLoader, setShowLoader] = useState(false);
   const [userEntryState, userEntryDispatch] = useReducer(
     userEntryReducer,
@@ -39,10 +39,12 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           password: pwd,
         }
       );
-      const decodedValue: { token: string; name: string; iat: number } =
-        jwt_decode(data.token);
-      const loginData = { token: data.token, user: decodedValue.name };
+      const decodedValue: { token: string; name: string; iat: number; _id: string; } =
+      jwt_decode(data.token);
+      console.log(decodedValue._id);
+      const loginData = { token: data.token, user: decodedValue.name, userId:decodedValue._id };
       setLogin(loginData);
+      localStorage.setItem("login", JSON.stringify(loginData));
       userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
       navigate("/");
     } catch (err) {

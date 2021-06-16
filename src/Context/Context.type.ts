@@ -9,6 +9,7 @@ export type QuizContextValue = {
 export type LoginData = {
   token: string;
   user: string;
+  userId: string;
 } | null;
 
 

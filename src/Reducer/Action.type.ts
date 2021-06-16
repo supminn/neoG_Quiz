@@ -15,7 +15,7 @@ import {
   SET_NAME,
   SET_EMAIL,
   CLEAR_TEXT_FIELDS,
-} from "./typeValues";
+} from "./Values.type";
 
 export type QuizAction =
   | {

@@ -7,7 +7,7 @@ import {
   SET_NAME,
   SET_PASSWORD,
   SET_USERNAME,
-} from "./typeValues";
+} from "./Values.type";
 
 export const userEntryReducer = (state: UserState, action: UserEntryAction) => {
   switch (action.type) {

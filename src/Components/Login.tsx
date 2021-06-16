@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Password } from "./Password";
 import { useAuthentication } from "../Context/AuthenticationProvider";
-import { SET_USERNAME } from "../Reducer/typeValues";
+import { SET_USERNAME } from "../Reducer/Values.type";
 import { primaryBtn, secondaryBtn } from "../Styles/Style";
 
 export const Login = () => {

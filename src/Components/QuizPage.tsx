@@ -8,7 +8,7 @@ import {
   INCREMENT,
   NEXT_QUESTION,
   UPDATE_ATTEMPT,
-} from "../Reducer/typeValues";
+} from "../Reducer/Values.type";
 import {
   primaryBtn,
   optionBtn,

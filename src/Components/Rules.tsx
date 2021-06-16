@@ -11,13 +11,6 @@ export const Rules = () => {
     document.title = "SupQuiz | Rules"
   }, []);
 
-  // useEffect(() => {
-  //   (async() => {
-  //     await fetchQuizData(quizDispatch, quizId, setShowLoader);
-  //   })();
-  //   console.log("Rending within rules");
-  // },[]);
-
   return (
     <section className="flex items-center justify-center px-4 pb-12">
       <div className="mt-12 w-full rounded-lg shadow-lg p-4 bg-white md:w-3/4 lg:w-6/12">

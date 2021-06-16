@@ -9,4 +9,4 @@ export { Footer } from "./Footer";
 export { Login } from "./Login";
 export { Signup } from "./Signup";
 export { UserProfile } from "./UserProfile";
-
+export {PrivateRoute} from "./PrivateRoute";

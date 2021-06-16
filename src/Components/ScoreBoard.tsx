@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useQuizContext } from "../Context/QuizProvider";
-import { CLEAR_STATS } from "../Reducer/typeValues";
+import { CLEAR_STATS } from "../Reducer/Values.type";
 import { secondaryBtn } from "../Styles/Style";
 
 export const ScoreBoard = () => {

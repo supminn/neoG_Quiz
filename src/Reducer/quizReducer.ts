@@ -12,7 +12,7 @@ import {
   SET_QUIZZES,
   UPDATE_ATTEMPT,
   UPDATE_HIGHSCORE,
-} from "./typeValues";
+} from "./Values.type";
 
 export const initialState: QuizState = {
   quizzes: [] as Quizzes,

@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useReducer, useState } from "react";
 import { useNavigate } from "react-router";
 import { UserState } from "../Reducer/State.type";
-import { CLEAR_TEXT_FIELDS } from "../Reducer/typeValues";
+import { CLEAR_TEXT_FIELDS } from "../Reducer/Values.type";
 import { userEntryReducer } from "../Reducer/userEntryReducer";
 import { AuthenticationContextValue, LoginData } from "./Context.type";
 import jwt_decode from "jwt-decode";
@@ -29,14 +29,14 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
   );
   const navigate = useNavigate();
 
-  const loginUser = async (name: string, pwd: string) => {
+  const loginUser = async (name: string, password: string) => {
     try {
       setShowLoader(true);
       const { data } = await axios.post(
         "https://api-supminn.herokuapp.com/users/login",
         {
           username: name.toLowerCase(),
-          password: pwd,
+          password,
         }
       );
       const decodedValue: { token: string; name: string; iat: number; _id: string; } =

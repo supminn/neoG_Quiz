@@ -1,5 +1,5 @@
 import { useQuizContext } from "../Context/QuizProvider";
-import { RESET } from "../Reducer/typeValues";
+import { RESET } from "../Reducer/Values.type";
 import { createTimer } from "../Utils/timer";
 
 type ModalType = {

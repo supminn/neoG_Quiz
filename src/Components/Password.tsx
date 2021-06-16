@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UserEntryAction } from "../Reducer/Action.type";
-import { SET_PASSWORD } from "../Reducer/typeValues";
+import { SET_PASSWORD } from "../Reducer/Values.type";
 
 type PasswordProps = {
   userValue: string;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { QuizAction } from "../Reducer/Action.type";
-import { SET_CURRENT_QUIZ, SET_QUIZZES } from "../Reducer/typeValues";
+import { SET_CURRENT_QUIZ, SET_QUIZZES } from "../Reducer/Values.type";
 import { individualQuizQuery, quizzesQuery } from "./queries";
 
 export const fetchQuizzes = async (

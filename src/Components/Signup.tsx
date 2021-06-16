@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../Context/AuthenticationProvider";
-import { SET_EMAIL, SET_NAME, SET_USERNAME } from "../Reducer/typeValues";
+import { SET_EMAIL, SET_NAME, SET_USERNAME } from "../Reducer/Values.type";
 import { primaryBtn, secondaryBtn } from "../Styles/Style";
 import { Password } from "./Password";
 

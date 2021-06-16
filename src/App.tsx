@@ -10,7 +10,7 @@ import {
   Signup,
 } from "./Components";
 import { Routes, Route } from "react-router-dom";
-import { PrivateRoute } from "./Components/PrivateRoute";
+import { PrivateRoute } from "./Components";
 
 function App() {
   return (

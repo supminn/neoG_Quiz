@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useQuizContext } from "../Context/QuizProvider";
-import { RESET, UPDATE_HIGHSCORE } from "../Reducer/typeValues";
+import { RESET, UPDATE_HIGHSCORE } from "../Reducer/Values.type";
 import { primaryBtn, secondaryBtn } from "../Styles/Style";
 import Party from "../Assets/Party.png";
 import Sad from "../Assets/Sad.svg";

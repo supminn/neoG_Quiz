@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../Context/AuthenticationProvider";
 import { SET_EMAIL, SET_NAME, SET_USERNAME } from "../Reducer/Values.type";
@@ -11,9 +12,26 @@ export const Signup = () => {
     registerUser,
   } = useAuthentication();
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const signupHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isPasswordValid()) {
+      setErrorMsg(
+        "Password must contain at least 8 characters, at least 1 number and both lower and uppercase letters."
+      );
+    } else {
     await registerUser(name, username, password, email);
+    }
+  };
+
+  const isPasswordValid = () => {
+    if (
+      password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/) ==
+      null
+    )
+      return false;
+    else return true;
   };
 
   return (
@@ -83,6 +101,7 @@ export const Signup = () => {
         <button type="submit" className={primaryBtn}>
           Register
         </button>
+        {errorMsg && <p className="txt-desc primaryBg-txt">{errorMsg}</p>}
       </form>
       <div className="text-lg font-semibold p-2 md:w-3/4 lg:w-1/2 m-auto">
         Already a member?{" "}

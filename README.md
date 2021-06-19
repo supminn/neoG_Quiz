@@ -12,11 +12,25 @@ SupQuiz is a multilevel quiz related to jump rope. There are 3 levels - easy, me
 - React Router v6 (beta) for routes
 - Express & MongoDB for user authentication [Repo Link](https://github.com/supminn/neoG_Backend/)
 - Hasura GraphQL to store quiz data
+
+## Functionalities
+- Multiple Quizzes
+- Rules and instructions prior to starting a quiz
+- Timer of 30 seconds for each question
+- Display the right answer after attempt or end of time
+- Final scores at the end of quiz
+- Access score board if user is signed in
+
 ## Enhancements
 * Fix data on refresh
 * Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)
 * Challenge friends to take up the quiz.
 * Show points break-up.
+
+## Live link and demo
+[Deployed Link](https://deploy-preview-1--supquiz.netlify.app/)
+
+https://user-images.githubusercontent.com/30731236/122635590-7354a900-d102-11eb-827c-ede49c4911ec.mp4
 
 ## Instructions on using SupQuiz locally.
 

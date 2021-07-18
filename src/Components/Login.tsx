@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Password } from "./Password";
 import { useAuthentication } from "../Context/AuthenticationProvider";
-import { SET_USERNAME } from "../Reducer/Values.type";
+import { SET_PASSWORD, SET_USERNAME } from "../Reducer/Values.type";
 import { primaryBtn, secondaryBtn } from "../Styles/Style";
 
 export const Login = () => {
@@ -48,6 +48,21 @@ export const Login = () => {
         <button type="submit" className={primaryBtn}>
           Login
         </button>
+        <p
+          className="text-blue-900 font-semibold hover:text-yellow-700 hover:underline cursor-pointer"
+          onClick={() => {
+            userEntryDispatch({
+              type: SET_USERNAME,
+              payload: { username: "tester" },
+            });
+            userEntryDispatch({
+              type: SET_PASSWORD,
+              payload: { password: "Testing1" },
+            });
+          }}
+        >
+          Use test credentials
+        </p>
       </form>
 
       <div className="p-2 md:w-3/4 lg:w-1/2 m-auto">

@@ -36,12 +36,6 @@ export const QuizPage = () => {
 
   const totalQuestions = currentQuiz.questions.length;
 
-  // useEffect(() => {
-  //   (async () => {
-  //     await fetchQuizData(quizDispatch, quizId, setShowLoader);
-  //   })();
-  // }, []);
-
   useEffect(() => {
     document.title = `SupQuiz | ${currentQuiz.level}`;
     start();
@@ -105,7 +99,7 @@ export const QuizPage = () => {
           </div>
           <section className="lg:flex lg:justify-center lg:items-start lg:p-4">
             <img
-              className="w-full m-auto h-auto md:w-3/4 lg:w-1/3  flex-grow"
+              className="w-auto m-auto md:w-3/4 lg:w-1/3 flex-grow max-h-96"
               src={currentQuiz.questions[questionNo].image}
               alt="jump rope quiz"
             />

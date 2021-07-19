@@ -18,7 +18,7 @@ export const initialState: QuizState = {
   quizzes: [] as Quizzes,
   score: 0,
   questionNo: 0,
-  currentQuiz: {quizName:"", questions:[], id:"", level:""} as Quiz,
+  currentQuiz: { quizName: "", questions: [], id: "", level: "" } as Quiz,
   stats: JSON.parse(localStorage.getItem("Stats")!) || [],
 };
 
@@ -33,6 +33,7 @@ export const quizReducer = (state: QuizState, action: QuizAction) => {
       return {
         ...state,
         currentQuiz: action.payload,
+        questionNo: 0,
       };
     case INITIALIZE_STATS:
       const initialStats = action.payload.quizzes.map((quiz) => ({

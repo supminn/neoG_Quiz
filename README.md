@@ -22,7 +22,7 @@ SupQuiz is a multilevel quiz related to jump rope. There are 3 levels - easy, me
 - Access score board if user is signed in
 
 ## Enhancements
-* Fix data on refresh
+* Persist quiz data on refresh
 * Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)
 * Challenge friends to take up the quiz.
 * Show points break-up.

@@ -1,7 +1,62 @@
-# Getting Started with Create React App
+[![wakatime](https://wakatime.com/badge/github/supminn/neoG_Quiz.svg)](https://wakatime.com/badge/github/supminn/neoG_Quiz)
+
+# SupQuiz
+
+SupQuiz is a multilevel quiz related to jump rope. There are 3 levels - easy, medium and hard. As the difficulty increases, negative markings are introduced.
+
+## Technology Stack
+- TypeScript with React
+- React - Reducer + Context
+- React Player for video playback
+- Styling using [TailwindCSS](https://tailwindcss.com/)
+- React Router v6 (beta) for routes
+- Express & MongoDB for user authentication [Repo Link](https://github.com/supminn/neoG_Backend/)
+- Hasura GraphQL to store quiz data
+
+## Functionalities
+- Multiple Quizzes
+- Rules and instructions prior to starting a quiz
+- Timer of 30 seconds for each question
+- Display the right answer after attempt or end of time
+- Final scores at the end of quiz
+- Access score board if user is signed in
+
+## Enhancements
+* Fix data on refresh
+* Quiz unlocks by scoring a threshold in the previous quiz. (specific to a user)
+* Challenge friends to take up the quiz.
+* Show points break-up.
+
+## Live link and demo
+[Deployed Link](https://deploy-preview-1--supquiz.netlify.app/)
+
+https://user-images.githubusercontent.com/30731236/122635590-7354a900-d102-11eb-827c-ede49c4911ec.mp4
+
+## Instructions on using SupQuiz locally.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This starter kit could be installed in 2 ways.
+
+1. Clone this repository and start working on the development.
+2. Using [degit](https://github.com/Rich-Harris/degit).
+
+### Instructions while using degit
+
+degit installation:
+
+```bash
+yarn install -g degit
+```
+
+Follow the below instructions to use this starter kit:
+
+```
+degit supminn/neoG_Quiz my-app-name
+cd my-app-name
+
+yarn install
+```
 ## Available Scripts
 
 In the project directory, you can run:

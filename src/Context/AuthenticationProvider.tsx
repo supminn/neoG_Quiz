@@ -39,10 +39,17 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           password,
         }
       );
-      const decodedValue: { token: string; name: string; iat: number; _id: string; } =
-      jwt_decode(data.token);
-      console.log(decodedValue._id);
-      const loginData = { token: data.token, user: decodedValue.name, userId:decodedValue._id };
+      const decodedValue: {
+        token: string;
+        name: string;
+        iat: number;
+        _id: string;
+      } = jwt_decode(data.token);
+      const loginData = {
+        token: data.token,
+        user: decodedValue.name,
+        userId: decodedValue._id,
+      };
       setLogin(loginData);
       localStorage.setItem("login", JSON.stringify(loginData));
       userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
@@ -77,8 +84,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
           email: email.toLowerCase(),
         }
       );
-      if(data.success){
-        alert(`Thank you ${name} for signing up with us! \nLogin to continue 🙂`);
+      if (data.success) {
+        alert(
+          `Thank you ${name} for signing up with us! \nLogin to continue 🙂`
+        );
         userEntryDispatch({ type: CLEAR_TEXT_FIELDS });
         navigate("/");
       }

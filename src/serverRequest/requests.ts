@@ -55,6 +55,7 @@ export const fetchQuizData = async (
       },
     });
     quizDispatch({ type: SET_CURRENT_QUIZ, payload: Quiz[0] });
+    return Quiz[0];
   } catch (error) {
     console.error(error);
   } finally {

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useQuizContext } from "../Context/QuizProvider";
-import { INITIALIZE_STATS, SET_CURRENT_QUIZ } from "../Reducer/Values.type";
+import { INITIALIZE_STATS } from "../Reducer/Values.type";
 import { header1, secondaryBtn } from "../Styles/Style";
 import Hero from "../Assets/home.svg";
 import Pic1 from "../Assets/Basic.png";
@@ -13,8 +13,11 @@ import { fetchQuizData } from "../serverRequest/requests";
 
 export const Home = () => {
   const navigate = useNavigate();
-  const { quizDispatch, quizState: {quizzes} } = useQuizContext();
-  const {login, setShowLoader} = useAuthentication();
+  const {
+    quizDispatch,
+    quizState: { quizzes },
+  } = useQuizContext();
+  const { login, setShowLoader } = useAuthentication();
 
   useEffect(() => {
     document.title = "SupQuiz | Home";
@@ -27,9 +30,13 @@ export const Home = () => {
   }, [login]);
 
   const setCurrentQuiz = async (id: string) => {
-    await fetchQuizData(quizDispatch, id, setShowLoader);
-    navigate(`/rules/${id}`);
-  }
+    const quiz = await fetchQuizData(quizDispatch, id, setShowLoader);
+    if (quiz.level === "Easy" || login?.user) {
+      navigate(`/rules/${id}`);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <>
